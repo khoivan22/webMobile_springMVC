@@ -26,4 +26,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity,String> {
 
     @Query(value = "select * from product where ID_SUPPLIER=?1 ",nativeQuery = true)
     Page<ProductEntity> getProductBySupplier(String ID_SUPPLIER, Pageable pageable);
+
+    @Query(value = "select  * from product  order by ID_PRODUCT desc limit 1",nativeQuery = true)
+    List<ProductEntity> ok();
 }

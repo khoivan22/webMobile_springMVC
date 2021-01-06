@@ -60,6 +60,13 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.30</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+<!--        <dependency>-->
+<!--            <groupId>com.microsoft.sqlserver</groupId>-->
+<!--            <artifactId>mssql-jdbc</artifactId>-->
+<!--            <version>8.4.1.jre8</version>-->
+<!--        </dependency>-->
+
 
         <!--Unit testing-->
         <dependency>
@@ -87,6 +94,8 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+
+
 
         <!--Jackson data binding-->
         <dependency>
@@ -127,6 +136,12 @@
             <artifactId>jquery</artifactId>
             <version>3.2.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars/jquery-ui -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery-ui</artifactId>
+            <version>1.12.0</version>
+        </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
@@ -141,6 +156,12 @@
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
             <version>4.7.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars.npm/sweetalert -->
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>sweetalert</artifactId>
+            <version>2.1.2</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->

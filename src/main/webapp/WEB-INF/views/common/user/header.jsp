@@ -179,7 +179,7 @@
     /*load menu*/
     $(document).ready(function () {
         $.ajax({
-            url: '${pageContext.request.contextPath}/listMenu',
+            url: '${pageContext.request.contextPath}//listMenu',
             type: 'GET',
             contentType: "application/json",
             dataType:'json',

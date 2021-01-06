@@ -24,19 +24,15 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header ">
-                                    <div class=" col-md-6">
-                                        <a href="col-sm-12${pageContext.request.contextPath}/admin/managerProduct/add"
-                                           class="btn btn-icon icon-left btn-warning"><i
+                                    <div class="col-sm-12 col-md-6">
+                                        <a href="${pageContext.request.contextPath}/admin/managerSupplier/add" class="btn btn-icon icon-left btn-warning"><i
                                                 class="fas fa-plus-circle"></i>
-                                            add product</a>
-
+                                            add supplier</a>
                                         <button id="delete" class="btn btn-icon icon-left btn-warning">
                                             <i  class="fas fa-trash"></i>
                                             delete product
                                         </button>
                                     </div>
-
-
                                     <div class="col-sm-12 col-md-6">
                                         <div id="table-1_filter" class="dataTables_filter">
                                             <input class="form-control" type="search" placeholder="Search"
@@ -65,20 +61,17 @@
                                                     </div>
                                                 </th>
                                                 <th>Id</th>
-                                                <th>Id Supplier</th>
                                                 <th>Name</th>
-                                                <th>Img</th>
-                                                <th>Active</th>
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <c:forEach var="product" items="${pageTuts.content}">
+                                            <c:forEach var="supp" items="${pageTuts.content}">
                                                 <tr>
 
                                                     <td>
                                                         <div class="pretty p-svg p-curve">
-                                                            <input type="checkbox" value="${product.ID_PRODUCT}" class="cb-one"/>
+                                                            <input value="${supp.ID_SUPPLIER}" type="checkbox" class="cb-one"/>
                                                             <div class="state p-danger">
                                                                 <!-- svg path -->
                                                                 <svg class="svg svg-icon" viewBox="0 0 20 20">
@@ -91,24 +84,12 @@
 
                                                         </div>
                                                     </td>
-                                                    <td>${product.ID_PRODUCT}</td>
-                                                    <td>${product.supp.ID_SUPPLIER}</td>
-                                                    <td>${product.PRODUCT_NAME}</td>
-                                                    <td><img src="<c:url value="${product.listImg[0]}"/>" width="40px"
-                                                             height="40px"></td>
-                                                    <td>
-                                                        <div class="preview col-sm-12 col-md-6">
-                                                            <i class="material-icons text-success">check_circle</i>
-                                                        </div>
-                                                            <%--                                                    <div class="preview">--%>
-                                                            <%--                                                        <i class="material-icons">remove_circle_outline</i> <span class="icon-name">remove_circle_outline</span>--%>
-                                                            <%--                                                    </div>--%>
-                                                    </td>
+                                                    <td>${supp.ID_SUPPLIER}</td>
+                                                    <td>${supp.NAME_SUPPLIER}</td>
                                                     <td>
                                                         <div class="preview">
-                                                            <a><i class="material-icons text-danger">delete</i></a>
-                                                            <a href="${pageContext.request.contextPath}/admin/managerProduct/edit?id=${product.ID_PRODUCT}"><i
-                                                                    class="material-icons text-warning">create</i></a>
+                                                            <a><i  class="material-icons text-danger">delete</i></a>
+                                                            <a href="${pageContext.request.contextPath}/admin/managerSupplier/edit?id=${supp.ID_SUPPLIER}"><i class="material-icons text-warning">create</i></a>
                                                             <i class="material-icons text-info">remove_red_eye</i>
                                                         </div>
                                                     </td>
@@ -119,16 +100,16 @@
                                         <div class="d-flex flex-row-reverse bd-highlight">
                                             <ul class="pagination">
                                                 <li class="page-item"><a class="page-link"
-                                                                         href="${pageContext.request.contextPath}/admin/managerProduct/${numPage==1?pageTuts.totalPages:(numPage-1)}">Previous</a>
+                                                                         href="${pageContext.request.contextPath}/admin/managerSupplier/${page==1?pageTuts.totalPages:(page-1)}">Previous</a>
                                                 </li>
                                                 <c:forEach var="i" begin="1" end="${pageTuts.totalPages}">
-                                                    <li class="page-item ${numPage==i?'active':''}"><a
+                                                    <li class="page-item ${page==i?'active':''}"><a
                                                             class="page-link"
-                                                            href="${pageContext.request.contextPath}/admin/managerProduct/${i}">${i}</a>
+                                                            href="${pageContext.request.contextPath}/admin/managerSupplier/${i}">${i}</a>
                                                     </li>
                                                 </c:forEach>
                                                 <li class="page-item"><a class="page-link"
-                                                                         href="${pageContext.request.contextPath}/admin/managerProduct/${numPage==pageTuts.totalPages?1:(numPage+1)}">Next</a>
+                                                                         href="${pageContext.request.contextPath}/admin/managerSupplier/${page==pageTuts.totalPages?1:(page+1)}">Next</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -149,7 +130,7 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function (){
 
     });
 </script>
@@ -164,33 +145,35 @@
 </body>
 
 <script>
+
     $(document).ready(function () {
         $('#delete').click(function () {
             let ids=[];
             $.each($('.cb-one'), function () {
                 if($(this).prop('checked'))
-                ids.push($(this).val());
+                    ids.push($(this).val());
             });
             // alert(ids)
             if(ids.length>0){
-            $.ajax( {
-                url:"/web_mobile/admin/managerProduct/deletes",
-                type: "post",
-                data: {ids:ids.toString()},
-                success(data){
-                    alert("xóa thành công")
-                    location.reload()
-                },
-                error(data){
-                   alert("huhu")
-                }
-            });
+                $.ajax( {
+                    url:"/web_mobile/admin/managerSupplier/deletes",
+                    type: "post",
+                    data: {ids:ids.toString()},
+                    success(data){
+                        alert("xóa thành công")
+                        location.reload()
+                    },
+                    error(data){
+                        alert("huhu")
+                    }
+                });
             }else {
                 swal("bạn chưa chọn sản phẩm nào")
             }
         });
     });
 </script>
+
 <!-- datatables.html  21 Nov 2019 03:55:25 GMT -->
 
 </html>

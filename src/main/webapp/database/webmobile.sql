@@ -11,7 +11,7 @@
  Target Server Version : 100413
  File Encoding         : 65001
 
- Date: 18/12/2020 20:30:35
+ Date: 05/01/2021 23:11:27
 */
 
 SET NAMES utf8mb4;
@@ -95,7 +95,7 @@ CREATE TABLE `configuration`  (
 -- ----------------------------
 -- Records of configuration
 -- ----------------------------
-INSERT INTO `configuration` VALUES ('No.00269739', 'HD, 1334 x 750 pixels', '12.0 MP', '2 GB', '32 GB', '33 GB', 'Apple A10, 4 nhơn, 2.3 GHz', 'Apple GPU 3 nhơn', '7.45 Wh (1960 mAh)', 'iOS11', 'Nano Sim, 1 Sim, hỗ trợ 4G');
+INSERT INTO `configuration` VALUES ('No.00269739', 'HD, 1334 x 750 pixels', '12.0 MP', '2 GB', '2GB', '8GB', 'Apple A10, 4 nhơn, 2.3 GHz', 'Apple GPU 3 nhơn', '7.45 Wh (1960 mAh)', 'iOS11', 'Nano Sim, 1 Sim, hỗ trợ 4G');
 INSERT INTO `configuration` VALUES ('No.00269765', 'Full HD, 1920 x 1080 pixels', '7.0 MP', 'Dual 12.0 MP', '3 GB', '32 GB', 'A10, 4 nhơn, 2.3 GHz', 'Apple GPU 3 nhơn', '11.1 Wh (2900 mAh)', 'iOS11', 'Nano Sim, 1 Sim, hỗ trợ 4G');
 INSERT INTO `configuration` VALUES ('No.00271554', 'Full HD, 1080 x 1920 pixels', '5.0 MP', '12.0 MP', '2 GB', '32 GB', 'Apple A9, 2 nhơn, 1.8 GHz', 'PowerVR GT7600', '2750mAh', 'iOS11', 'Nano Sim, 1 Sim');
 INSERT INTO `configuration` VALUES ('No.00336613', '2k; 2960 x 1440 pixels', '8.0 MP', 'Dual 12.0 MP', '4 GB', '64 GB', 'Exynos 8895; 8 nhân; 4 nhân 2.3 GHz;  4 nhân 1.7 GHz', 'Mali G71', '3500 mAh', 'Android 9.0 (Pie)', 'Nano Sim; 2 Khe; Hỗ trợ 4G');
@@ -157,6 +157,7 @@ INSERT INTO `configuration` VALUES ('No.00615142', '6.3 inches; Full HD+; 1080 x
 INSERT INTO `configuration` VALUES ('No.00619318', '6.22 inches; HD +; 720 x 1520 Pixels', '8.0 MP', '12.0 MP', '2 GB', '32 GB', 'Snapdragon 439; Octa-Core; 2.0Ghz', 'Adreno 505', '5000 mAh', 'Android 9', 'Nano SIM;');
 INSERT INTO `configuration` VALUES ('No.00622392', '6.3 inches; Full HD+; 1080 x 2340 Pixels', '13.0 MP', '48 MP+ 8 MP+ 2 MP+ 2 MP', '3 GB', '32 GB', 'Snap 665; Octa-Core; 2.0 Ghz', 'Adreno 610', '4000 mAh', 'Android 9.0 (Pie)', 'Nano SIM; 2 Sim');
 INSERT INTO `configuration` VALUES ('No.00631292', '7.3; Super AMOLED; Full HD+; 2152 x 1536 Pixels', '10 MP; 8 MP; 10 MP', '12 MP ; 12 MP; 16 MP', '12 GB', '512 GB', '1 nhân 2.84 GHz; 3 nhân 2.42 GHz & 4 nhân 1.8 GHz; 8; 1 nhân 2.84 GHz; 3 nhân 2.42 GHz & 4 nhân', 'Adreno 640', '4380 mAh', 'Android 9.0 (Pie)', 'Nano SIM; 1 Sim');
+INSERT INTO `configuration` VALUES ('No.631294', '', '', '', '2GB', '8GB', '', '', '', '', '');
 
 -- ----------------------------
 -- Table structure for detail_order
@@ -212,7 +213,7 @@ CREATE TABLE `product`  (
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES ('No.00269739', 'DT', 'APP', 'iPhone 7 32GB ', 8990000, '/img/phone/636159398645952790_ip7-black-1.jpg~/img/phone/636159398740350005_ip7-black-2.jpg~/img/phone/636159398740506008_ip7-black-3.jpg~', 1000, 1, 1500000, 2);
+INSERT INTO `product` VALUES ('No.00269739', 'DT', 'APP', 'iPhone 7 32GB', 8990000, '/img/phone/636159398645952790_ip7-black-1.jpg~/img/phone/636159398740350005_ip7-black-2.jpg~/img/phone/636159398740506008_ip7-black-3.jpg~', 1000, 0, 0, 0);
 INSERT INTO `product` VALUES ('No.00269765', 'DT', 'APP', 'iPhone 7 Plus 32GB ', 11990000, '/img/phone/636836628988322696_ip7-plus-vang-1.png~/img/phone/636836628988166719_ip7-plus-vang-2.png~/img/phone/636836628988478673_ip7-plus-vang-3.png~/img/phone/636836628988166719_ip7-plus-vang-4.png~/img/phone/636836628987688789_ip7-plus-vang-5.png~', 1000, 1, 1500000, 1);
 INSERT INTO `product` VALUES ('No.00271554', 'DT', 'APP', 'iPhone 6s Plus 32GB ', 8990000, '/img/phone/636172339622394948_apple-Iphone-6s-gold-1.jpg~/img/phone/636172339809600948_apple-Iphone-6s-gold-2.jpg~/img/phone/636172339809912958_apple-Iphone-6s-gold-3.jpg~', 1000, 1, 0, 0);
 INSERT INTO `product` VALUES ('No.00336613', 'DT', 'SAM', 'Samsung Galaxy S8 Plus ', 12900000, '/img/phone/636396217066191623_1.jpg~/img/phone/636396217240361623_2.jpg~/img/phone/636396217378181623_3.jpg~/img/phone/636396217480091623_4.jpg~', 1000, 1, 1500000, 0);
@@ -274,6 +275,7 @@ INSERT INTO `product` VALUES ('No.00615142', 'DT', 'XIA', 'Xiaomi Redmi Note 8 4
 INSERT INTO `product` VALUES ('No.00619318', 'DT', 'XIA', 'Xiaomi Redmi 8A 2GB - 32GB ', 15000000, '/img/phone/637072701542091596_xiaomi-redmi-8a-den-1.png~', 1000, 1, 1500000, 0);
 INSERT INTO `product` VALUES ('No.00622392', 'DT', 'XIA', 'Xiaomi Redmi Note 8 3GB-32GB ', 15000000, '/img/phone/637060418361864075_xiaomi-redmi-note-8-den-1.png~', 1000, 1, 1500000, 0);
 INSERT INTO `product` VALUES ('No.00631292', 'DT', 'SAM', 'Samsung Galaxy Fold ', 50000000, '/img/phone/637102754985873870_samsung-galaxy-fold-den-0.png~/img/phone/637102750659229623_samsung-galaxy-fold-den-1.png~/img/phone/637102750659209597_samsung-galaxy-fold-den-3.png~/img/phone/637102750658709593_samsung-galaxy-fold-den-2.png~/img/phone/637102754985533985_samsung-galaxy-fold-den-4.png~', 1000, 1, 1500000, 0);
+INSERT INTO `product` VALUES ('No.631294', 'DT', 'APP', '', 0, '', 0, 0, 0, 0);
 
 -- ----------------------------
 -- Table structure for slide

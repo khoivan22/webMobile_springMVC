@@ -57,6 +57,7 @@ public class JpaConfig {
 //		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL55Dialect");
+//        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.SQLServer2012Dialect");
         properties.setProperty("hibernate.show_sql", "true");
 //		properties.setProperty("hibernate.format_sql", "true");
         return properties;

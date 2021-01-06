@@ -1,5 +1,6 @@
 package vn.nlu.fit.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -20,10 +21,12 @@ public class CommentEntity {
     private int ACTIVE;
     private int EVALUATE;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ID_PRODUCT")
     private ProductEntity product;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "USER_NAME")
     private UserEntity user;

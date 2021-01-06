@@ -55,7 +55,7 @@
                                 <div class="product">
                                     <figure class="product-media">
                                         <span class="product-label label-new">New</span>
-                                        <a href="product.html">
+                                        <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">
                                             <img src="<c:url value="${product.listImg[0]}"/>" alt="Product image"
                                                  class="product-image">
                                         </a>
@@ -103,7 +103,7 @@
                                 <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/listProduct/search/${keySearch}/${numPage==pageTuts.totalPages?1:(numPage+1)}">Next</a></li>
                             </ul>
                         </c:when>
-                        <c:when test="${keySearch!=null}">
+                        <c:when test="${idSupplier!=null}">
                             <ul class="pagination">
                                 <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/listProduct/${idSupplier}/${numPage==1?pageTuts.totalPages:(numPage-1)}">Previous</a></li>
                                 <c:forEach var="i" begin="1" end="${pageTuts.totalPages}">

@@ -21,3 +21,7 @@
     <script src="<c:url value="/assetAdmin/js/scripts.js"/>"></script>
     <!-- Custom JS File -->
     <%--<script src="<c:url value="/assetAdmin/js/custom.js"/>"></script>--%>
+
+<script src="<c:url value="/webjars/sweetalert/2.1.2/dist/sweetalert.min.js"/>"></script>
+
+<script src="<c:url value="/webjars/bootstrap/4.5.2/css/bootstrap.min.css"/>"></script>

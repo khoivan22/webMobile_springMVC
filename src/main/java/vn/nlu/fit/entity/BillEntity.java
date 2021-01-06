@@ -1,6 +1,7 @@
 package vn.nlu.fit.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -22,10 +23,12 @@ public class BillEntity {
     private int TOTAL;
     private String STATUS;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "USER_NAME")
     private UserEntity user;
 
+    @JsonIgnore
     @ManyToMany(fetch =FetchType.LAZY)
     @JoinTable(
             name = "detail_order",

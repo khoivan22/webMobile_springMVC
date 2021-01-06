@@ -1,5 +1,6 @@
 package vn.nlu.fit.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ public class ItemsEntity {
 
     private int ACTIVE;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "item")
     private List<ProductEntity> listProduct;
 
