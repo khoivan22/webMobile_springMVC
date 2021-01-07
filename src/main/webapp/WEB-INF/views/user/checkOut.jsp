@@ -1,16 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: vkhoi
-  Date: 12/15/2020
-  Time: 1:37 PM
+  Date: 1/6/2021
+  Time: 9:53 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-<img src="${pageContext.request.contextPath}/${link}" height="500" width="500"/>
-</body>
+  <head>
+    <title>$Title$</title>
+  </head>
+  <body>
+  $END$
+  </body>
 </html>
