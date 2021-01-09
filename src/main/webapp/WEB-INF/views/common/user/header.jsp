@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 
 <head>
 
@@ -20,6 +22,7 @@
     <script src="<c:url value="/assets/js/jquery.waypoints.min.js"/>"></script>
     <script src="<c:url value="/assets/js/owl.carousel.min.js"/>"></script>
     <script src="<c:url value="/assets/js/jquery.elevateZoom.min.js"/>"></script>
+    <script src="<c:url value="/assets/js/bootstrap-input-spinner.js"/>"></script>
     <!-- Main JS File -->
     <script src="<c:url value="/assets/js/main.js"/>"></script>
     <script src="<c:url value="/assets/js/demos/demo-4.js"/>"></script>
@@ -179,7 +182,7 @@
     /*load menu*/
     $(document).ready(function () {
         $.ajax({
-            url: '${pageContext.request.contextPath}//listMenu',
+            url: '${pageContext.request.contextPath}/listMenu',
             type: 'GET',
             contentType: "application/json",
             dataType:'json',

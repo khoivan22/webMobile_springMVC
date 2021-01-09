@@ -11,7 +11,7 @@
  Target Server Version : 100413
  File Encoding         : 65001
 
- Date: 05/01/2021 23:11:27
+ Date: 09/01/2021 13:09:49
 */
 
 SET NAMES utf8mb4;
@@ -278,6 +278,22 @@ INSERT INTO `product` VALUES ('No.00631292', 'DT', 'SAM', 'Samsung Galaxy Fold '
 INSERT INTO `product` VALUES ('No.631294', 'DT', 'APP', '', 0, '', 0, 0, 0, 0);
 
 -- ----------------------------
+-- Table structure for role
+-- ----------------------------
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role`  (
+  `idRole` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`idRole`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of role
+-- ----------------------------
+INSERT INTO `role` VALUES (1, 'ROLE_ADMIN');
+INSERT INTO `role` VALUES (2, 'ROLE_USER');
+
+-- ----------------------------
 -- Table structure for slide
 -- ----------------------------
 DROP TABLE IF EXISTS `slide`;
@@ -319,13 +335,21 @@ INSERT INTO `supplier` VALUES ('XIA', 'Xiaomi', 1);
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
   `USER_NAME` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `PASSWORD` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `PASSWORD` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `FULLNAME` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `EMAIL` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `PHONE` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `PRIVILEGES` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `CODE` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`USER_NAME`) USING BTREE
+  `idRole` bigint(20) NULL DEFAULT NULL,
+  PRIMARY KEY (`USER_NAME`) USING BTREE,
+  INDEX `FK6gm7vbjyv8qqbs7sj72cbjh51`(`idRole`) USING BTREE,
+  CONSTRAINT `FK6gm7vbjyv8qqbs7sj72cbjh51` FOREIGN KEY (`idRole`) REFERENCES `role` (`idRole`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('1', '$2a$10$xuVd2nyfqquJvCJA4BDiyee7AOLaqx9K/kXBlOtZD4ZkPPPpVRa.6', 'a', 'a@gmail.com', '1', NULL, 1);
+INSERT INTO `user` VALUES ('111', '$2a$10$d2fENe1RxT4jKTfxkz5OseMcIAfLyoWAtRN.2.RAEv1aRD3PrLHJe', '1', '1@gmail.com', '1', NULL, 2);
 
 SET FOREIGN_KEY_CHECKS = 1;

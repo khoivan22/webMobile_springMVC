@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="form-group conf" style="margin-left: 10px; display: none">
                                         <form:input class="form-control" path="config.ID_PRODUCT"/>
-                                        <form:errors cssClass="text-danger" path="ID_PRODUCT"/>
+                                        <form:errors cssClass="text-danger" path="config.ID_PRODUCT"/>
                                     </div>
                                     <div class="form-group conf" style="margin-left: 10px; display: none">
                                         <form:input class="form-control" path="IMG"/>
@@ -78,21 +78,23 @@
                                 </div>
                                 <c:if test="${par.equals('add')}">
                                 <div class="d-flex justify-content-center" style="margin-top: 10px">
-                                    <div class="image-preview">
+                                    <div class="image-preview ">
                                         <label for="image-upload-0">Choose File</label>
-                                        <input type="file" name="multipleFiles[0]" id="image-upload-0">
+                                        <input type="file" name="multipleFiles[0]" id="image-upload-0" class="file">
                                     </div>
+                                </div>
+                                    <div class="d-flex justify-content-center" style="margin-top: 10px">
                                     <div class="image-preview"
                                          style="margin-left: 20px;margin-top: 25px;height: 175px; width: 175px">
                                         <label for="image-upload-1">Choose File</label>
-                                        <input type="file" name="multipleFiles[1]" id="image-upload-1"/>
+                                        <input type="file" name="multipleFiles[1]" id="image-upload-1" class="file"/>
                                     </div>
                                     <div class="image-preview"
                                          style="margin-left: 20px;margin-top: 25px;height: 175px; width: 175px">
                                         <label for="image-upload-2">Choose File</label>
                                         <input type="file" name="multipleFiles[2]" id="image-upload-2">
                                     </div>
-                                    <div class="image-preview"
+                                    <div  class="image-preview"
                                          style="margin-left: 20px;margin-top: 25px;height: 175px; width: 175px">
                                         <label for="image-upload-3">Choose File</label>
                                         <input type="file" name="multipleFiles[3]" id="image-upload-3">
@@ -184,4 +186,8 @@
     </div>
 </div>
 </body>
+
+<script src="<c:url value="/assetAdmin/bundles/upload-preview/assets/js/jquery.uploadPreview.min.js"/>">
+
+</script>
 </html>

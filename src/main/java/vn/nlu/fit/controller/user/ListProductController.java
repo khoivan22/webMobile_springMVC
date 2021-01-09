@@ -49,7 +49,7 @@ public class ListProductController {
 
     @GetMapping("autoComplete")
     public @ResponseBody
-    List<ProductEntity> autoComplete(Model model, @RequestParam("keySearch") String keySearch) {return product.seach(keySearch);}
+    List<ProductEntity> autoComplete(@RequestParam("keySearch") String keySearch) {return product.seach(keySearch);}
 
     @RequestMapping("{idSupplier}/{numPage}")
     public String lisSupplierProduct(Model model, @PathVariable String idSupplier, @PathVariable int numPage) {

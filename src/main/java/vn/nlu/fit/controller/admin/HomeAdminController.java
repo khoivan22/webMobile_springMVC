@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeAdminController {
-    @RequestMapping
-    public String listAllProduct(Model model) {
-        return "redirect:/admin/homeAdmin";
+    @RequestMapping("admin/home")
+    public String listAllProduct() {
+        return "admin/homeAdmin";
     }
 }

@@ -15,6 +15,19 @@
         <%------------------------menu---------------------------%>
         <jsp:include page="../common/admin/menuAdmin.jsp"/>
         <!-- Main Content -->
+        <div class="main-content">
+            <section class="section">
+                <div class="section-body">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+
+                        <p style="font-size: 100px " class="text-success" > Welcome</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <jsp:include page="../common/admin/content.jsp"/>
+        </div>
         <%-----------------------content---------------------------%>
         <jsp:include page="../common/admin/content.jsp"/>
         <%------------------------footer------------------------%>

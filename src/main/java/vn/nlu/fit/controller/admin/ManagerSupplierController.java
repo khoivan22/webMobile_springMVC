@@ -20,7 +20,7 @@ public class ManagerSupplierController {
     @RequestMapping("{numPage}")
     public String managerSupplier(Model model, @PathVariable int numPage) {
 
-        Pageable pageable = PageRequest.of(numPage - 1, 12);
+        Pageable pageable = PageRequest.of(numPage - 1, 8);
         model.addAttribute("pageTuts", supplerRepository.findAll(pageable));
         return "admin/managerSupplier";
     }

@@ -25,11 +25,12 @@
                             <div class="card">
                                 <div class="card-header ">
                                     <div class="col-sm-12 col-md-6">
-                                        <a href="${pageContext.request.contextPath}/admin/managerItem/add" class="btn btn-icon icon-left btn-warning"><i
+                                        <a href="${pageContext.request.contextPath}/admin/managerItem/add"
+                                           class="btn btn-icon icon-left btn-warning"><i
                                                 class="fas fa-plus-circle"></i>
                                             add item</a>
-                                        <button id="delete" class="btn btn-icon icon-left btn-warning">
-                                            <i  class="fas fa-trash"></i>
+                                        <button id="deletes" class="btn btn-icon icon-left btn-warning">
+                                            <i class="fas fa-trash"></i>
                                             delete item
                                         </button>
                                     </div>
@@ -71,7 +72,8 @@
 
                                                     <td>
                                                         <div class="pretty p-svg p-curve">
-                                                            <input value="${item.ID_ITEMS}" type="checkbox" class="cb-one"/>
+                                                            <input value="${item.ID_ITEMS}" type="checkbox"
+                                                                   class="cb-one"/>
                                                             <div class="state p-danger">
                                                                 <!-- svg path -->
                                                                 <svg class="svg svg-icon" viewBox="0 0 20 20">
@@ -88,9 +90,12 @@
                                                     <td>${item.ITEMS_NAME}</td>
                                                     <td>
                                                         <div class="preview">
-                                                            <a><i  class="material-icons text-danger">delete</i></a>
-                                                            <a href="${pageContext.request.contextPath}/admin/managerItem/edit?id=${item.ID_ITEMS}"><i class="material-icons text-warning">create</i></a>
-                                                            <i class="material-icons text-info">remove_red_eye</i>
+                                                            <a href="#" class="delete">
+                                                                <i class="material-icons text-danger">delete</i>
+                                                                <input type="hidden" value="${item.ID_ITEMS}">
+                                                            </a>
+                                                            <a href="${pageContext.request.contextPath}/admin/managerItem/edit?id=${item.ID_ITEMS}"><i
+                                                                    class="material-icons text-warning">create</i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -130,7 +135,7 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function (){
+    $(document).ready(function () {
 
     });
 </script>
@@ -145,34 +150,57 @@
 </body>
 
 <script>
-
+    /**deletes*/
     $(document).ready(function () {
-        $('#delete').click(function () {
-            let ids=[];
+        $('#deletes').click(function () {
+            let ids = [];
             $.each($('.cb-one'), function () {
-                if($(this).prop('checked'))
+                if ($(this).prop('checked'))
                     ids.push($(this).val());
             });
             // alert(ids)
-            if(ids.length>0){
-                $.ajax( {
-                    url:"/web_mobile/admin/managerItem/deletes",
+            if (ids.length > 0) {
+                $.ajax({
+                    url: "/web_mobile/admin/managerItem/deletes",
                     type: "post",
-                    data: {ids:ids.toString()},
-                    success(data){
+                    data: {ids: ids.toString()},
+                    success(data) {
                         alert("xóa thành công")
                         location.reload()
                     },
-                    error(data){
+                    error(data) {
                         alert("huhu")
                     }
                 });
-            }else {
+            } else {
                 swal("bạn chưa chọn sản phẩm nào")
             }
         });
     });
+
+    /**delete*/
+    $(document).ready(function () {
+        $('.delete').click(function () {
+            let ids = [];
+            ids.push($(this).find("input").val())
+            if (ids.length > 0) {
+                $.ajax({
+                    url: "/web_mobile/admin/managerItem/deletes",
+                    type: "post",
+                    data: {ids: ids.toString()},
+                    success(data) {
+                        alert("xóa thành công")
+                        location.reload()
+                    },
+                    error(data) {
+                        alert("huhu")
+                    }
+                });
+            }
+        });
+    });
 </script>
+
 
 <!-- datatables.html  21 Nov 2019 03:55:25 GMT -->
 

@@ -14,11 +14,13 @@ public class UserEntity {
     @Id
     private String USER_NAME;
 
+    @Column(length = 1000)
     private String PASSWORD;
+    @Transient
+    private String REPASS;
     private String FULLNAME;
     private String EMAIL;
     private String PHONE;
-    private String PRIVILEGES;
     private String CODE;
 
     @JsonIgnore
@@ -28,4 +30,9 @@ public class UserEntity {
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<BillEntity> listBill;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "idRole")
+    RoleEntity role;
 }

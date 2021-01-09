@@ -30,8 +30,8 @@
                                                 class="fas fa-plus-circle"></i>
                                             add product</a>
 
-                                        <button id="delete" class="btn btn-icon icon-left btn-warning">
-                                            <i  class="fas fa-trash"></i>
+                                        <button id="deletes" class="btn btn-icon icon-left btn-warning">
+                                            <i class="fas fa-trash"></i>
                                             delete product
                                         </button>
                                     </div>
@@ -78,7 +78,8 @@
 
                                                     <td>
                                                         <div class="pretty p-svg p-curve">
-                                                            <input type="checkbox" value="${product.ID_PRODUCT}" class="cb-one"/>
+                                                            <input type="checkbox" value="${product.ID_PRODUCT}"
+                                                                   class="cb-one"/>
                                                             <div class="state p-danger">
                                                                 <!-- svg path -->
                                                                 <svg class="svg svg-icon" viewBox="0 0 20 20">
@@ -97,19 +98,28 @@
                                                     <td><img src="<c:url value="${product.listImg[0]}"/>" width="40px"
                                                              height="40px"></td>
                                                     <td>
-                                                        <div class="preview col-sm-12 col-md-6">
-                                                            <i class="material-icons text-success">check_circle</i>
+                                                        <div class="preview col-sm-12 col-md-6 actives">
+                                                            <c:if test="${product.ACTIVE==1}">
+                                                                <a href="#"><i class="material-icons text-success">check_circle</i></a>
+                                                            </c:if>
+                                                            <c:if test="${product.ACTIVE==0}">
+                                                                <a href="#"><i class="material-icons text-warning ">error</i></a>
+                                                            </c:if>
+                                                            <input type="hidden" value="${product.ID_PRODUCT}">
                                                         </div>
                                                             <%--                                                    <div class="preview">--%>
                                                             <%--                                                        <i class="material-icons">remove_circle_outline</i> <span class="icon-name">remove_circle_outline</span>--%>
                                                             <%--                                                    </div>--%>
                                                     </td>
                                                     <td>
-                                                        <div class="preview">
-                                                            <a><i class="material-icons text-danger">delete</i></a>
+                                                        <div class="preview" >
+                                                          <a href="#" class="delete">
+                                                               <i class="material-icons text-danger">delete</i>
+                                                               <input type="hidden" value="${product.ID_PRODUCT}">
+                                                          </a>
+
                                                             <a href="${pageContext.request.contextPath}/admin/managerProduct/edit?id=${product.ID_PRODUCT}"><i
                                                                     class="material-icons text-warning">create</i></a>
-                                                            <i class="material-icons text-info">remove_red_eye</i>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -164,31 +174,87 @@
 </body>
 
 <script>
+    /**deletes*/
     $(document).ready(function () {
-        $('#delete').click(function () {
-            let ids=[];
+        $('#deletes').click(function () {
+            let ids = [];
             $.each($('.cb-one'), function () {
-                if($(this).prop('checked'))
-                ids.push($(this).val());
+                if ($(this).prop('checked'))
+                    ids.push($(this).val());
             });
             // alert(ids)
-            if(ids.length>0){
-            $.ajax( {
-                url:"/web_mobile/admin/managerProduct/deletes",
-                type: "post",
-                data: {ids:ids.toString()},
-                success(data){
-                    alert("xóa thành công")
-                    location.reload()
-                },
-                error(data){
-                   alert("huhu")
-                }
-            });
-            }else {
+            if (ids.length > 0) {
+                $.ajax({
+                    url: "/web_mobile/admin/managerProduct/deletes",
+                    type: "post",
+                    data: {ids: ids.toString()},
+                    success(data) {
+                        alert("xóa thành công")
+                        location.reload()
+                    },
+                    error(data) {
+                        alert("huhu")
+                    }
+                });
+            } else {
                 swal("bạn chưa chọn sản phẩm nào")
             }
         });
+    });
+    /**delete*/
+    $(document).ready(function () {
+        $('.delete').click(function () {
+            let ids = [];
+            ids.push($(this).find("input").val())
+            if (ids.length > 0) {
+                $.ajax({
+                    url: "/web_mobile/admin/managerProduct/deletes",
+                    type: "post",
+                    data: {ids: ids.toString()},
+                    success(data) {
+                        alert("xóa thành công")
+                        location.reload()
+                    },
+                    error(data) {
+                        alert("huhu")
+                    }
+                });
+            }
+        });
+    });
+
+    /**Active*/
+    $(document).ready(function () {
+
+        $('.actives').click(function () {
+            const i = $(this).find("i");
+
+            $.ajax({
+                url: "/web_mobile/admin/managerProduct/active",
+                type: "get",
+                data: {id: $(this).find("input").val()},
+                success(status) {
+                    if (status === 0) {
+                        i.removeClass("text-success");
+                        i.addClass("text-warning")
+                        i.html("error");
+                    } else {
+                        i.removeClass("text-warning");
+                        i.addClass("text-success")
+                        i.html("check_circle");
+                    }
+                },
+                error(data) {
+                    alert("huhu")
+                }
+            })
+        });
+
+        // $.each($('.actives'),function () {
+        //
+        //
+        // });
+
     });
 </script>
 <!-- datatables.html  21 Nov 2019 03:55:25 GMT -->

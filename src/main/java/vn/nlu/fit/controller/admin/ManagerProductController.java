@@ -34,7 +34,7 @@ public class ManagerProductController {
 
     @RequestMapping("{numPage}")
     public String lisAllProduct(Model model, @PathVariable int numPage) {
-        Pageable paging = PageRequest.of(numPage - 1, 12);
+        Pageable paging = PageRequest.of(numPage - 1, 8);
         Page<ProductEntity> pageTuts = productRepository.findAll(paging);
         model.addAttribute("pageTuts", pageTuts);
         return "admin/managerProduct";
@@ -65,6 +65,7 @@ public class ManagerProductController {
 //        System.out.println(idPro);
 
         product.setID_PRODUCT(idPro);
+        product.setACTIVE(1);
         product.getConfig().setProduct(product);
 //        System.out.println(product.getSupp().getNAME_SUPPLIER()+"-----------------");
 //        product.setSupp(supplerRepository.findById(product.getSupp().getID_SUPPLIER()).get());
@@ -96,11 +97,21 @@ public class ManagerProductController {
     }
 
     @PostMapping("deletes")
-    public @ResponseBody boolean deletes(@RequestParam("ids") List<String> ids){
-        for (String id:ids) {
+    public @ResponseBody
+    boolean deletes(@RequestParam("ids") List<String> ids) {
+        for (String id : ids) {
             productRepository.deleteById(id);
         }
-
         return true;
     }
- }
+
+    @RequestMapping("active")
+    public @ResponseBody
+    int active(@RequestParam("id") String id) {
+        ProductEntity product = productRepository.findById(id).get();
+        int status=product.getACTIVE() == 0 ? 1 : 0;
+        product.setACTIVE(status);
+        productRepository.save(product);
+        return status;
+    }
+}

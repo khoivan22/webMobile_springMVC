@@ -28,7 +28,7 @@
                                         <a href="${pageContext.request.contextPath}/admin/managerSupplier/add" class="btn btn-icon icon-left btn-warning"><i
                                                 class="fas fa-plus-circle"></i>
                                             add supplier</a>
-                                        <button id="delete" class="btn btn-icon icon-left btn-warning">
+                                        <button id="deletes" class="btn btn-icon icon-left btn-warning">
                                             <i  class="fas fa-trash"></i>
                                             delete product
                                         </button>
@@ -88,9 +88,11 @@
                                                     <td>${supp.NAME_SUPPLIER}</td>
                                                     <td>
                                                         <div class="preview">
-                                                            <a><i  class="material-icons text-danger">delete</i></a>
+                                                            <a href="#" class="delete">
+                                                                <i  class="material-icons text-danger">delete</i>
+                                                                <input type="hidden" value="${supp.ID_SUPPLIER}">
+                                                            </a>
                                                             <a href="${pageContext.request.contextPath}/admin/managerSupplier/edit?id=${supp.ID_SUPPLIER}"><i class="material-icons text-warning">create</i></a>
-                                                            <i class="material-icons text-info">remove_red_eye</i>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -100,16 +102,16 @@
                                         <div class="d-flex flex-row-reverse bd-highlight">
                                             <ul class="pagination">
                                                 <li class="page-item"><a class="page-link"
-                                                                         href="${pageContext.request.contextPath}/admin/managerSupplier/${page==1?pageTuts.totalPages:(page-1)}">Previous</a>
+                                                                         href="${pageContext.request.contextPath}/admin/managerSupplier/${numPage==1?pageTuts.totalPages:(numPage-1)}">Previous</a>
                                                 </li>
                                                 <c:forEach var="i" begin="1" end="${pageTuts.totalPages}">
-                                                    <li class="page-item ${page==i?'active':''}"><a
+                                                    <li class="page-item ${numPage==i?'active':''}"><a
                                                             class="page-link"
                                                             href="${pageContext.request.contextPath}/admin/managerSupplier/${i}">${i}</a>
                                                     </li>
                                                 </c:forEach>
                                                 <li class="page-item"><a class="page-link"
-                                                                         href="${pageContext.request.contextPath}/admin/managerSupplier/${page==pageTuts.totalPages?1:(page+1)}">Next</a>
+                                                                         href="${pageContext.request.contextPath}/admin/managerSupplier/${numPage==pageTuts.totalPages?1:(numPage+1)}">Next</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -145,9 +147,9 @@
 </body>
 
 <script>
-
+/**delete*/
     $(document).ready(function () {
-        $('#delete').click(function () {
+        $('#deletes').click(function () {
             let ids=[];
             $.each($('.cb-one'), function () {
                 if($(this).prop('checked'))
@@ -169,6 +171,28 @@
                 });
             }else {
                 swal("bạn chưa chọn sản phẩm nào")
+            }
+        });
+    });
+
+    /**delete*/
+    $(document).ready(function () {
+        $('.delete').click(function () {
+            let ids = [];
+            ids.push($(this).find("input").val())
+            if (ids.length > 0) {
+                $.ajax({
+                    url: "/web_mobile/admin/managerSupplier/deletes",
+                    type: "post",
+                    data: {ids: ids.toString()},
+                    success(data) {
+                        alert("xóa thành công")
+                        location.reload()
+                    },
+                    error(data) {
+                        alert("huhu")
+                    }
+                });
             }
         });
     });

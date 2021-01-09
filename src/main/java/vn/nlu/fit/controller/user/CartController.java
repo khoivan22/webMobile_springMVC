@@ -1,2 +1,15 @@
-package vn.nlu.fit.controller.user;public class CartController {
+package vn.nlu.fit.controller.user;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("cart")
+public class CartController {
+
+    @RequestMapping
+    public String cartPage(){
+
+        return "user/cart";
+    }
 }

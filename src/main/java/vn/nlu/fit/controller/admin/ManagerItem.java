@@ -20,7 +20,7 @@ public class ManagerItem {
     @RequestMapping("{numPage}")
     public String managerItem(Model model, @PathVariable int numPage) {
 
-        Pageable pageable = PageRequest.of(numPage - 1, 12);
+        Pageable pageable = PageRequest.of(numPage - 1, 8);
         model.addAttribute("pageTuts", itemsRepository.findAll(pageable));
         return "admin/managerItem";
     }

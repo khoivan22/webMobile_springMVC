@@ -40,23 +40,4 @@ public class HomeController {
 
         return supplier.findAll();
     }
-
-
-    @RequestMapping("/test")
-    public  String test(){
-        return "user/test";
-    }
-
-
-    @PostMapping("/upload")
-    public  String upload(@RequestParam("file") MultipartFile multipartFile, Model model, HttpServletRequest request) throws IOException {
-        model.addAttribute("link", UploadFile.upFile(multipartFile,request));
-        return "user/result";
-    }
-
-    @RequestMapping("/a")
-    public  String a(){
-        return "/admin/managerProduct";
-    }
-
 }

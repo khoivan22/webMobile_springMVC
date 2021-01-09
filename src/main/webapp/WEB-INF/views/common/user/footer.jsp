@@ -209,7 +209,7 @@
             if ($('#keySearch').val().trim().length!==0){
                 $("#div-auto").css("height", "230px");
                 $.ajax({
-                    url: "/web_mobile/listProduct/autoComplete",
+                    url: "${pageContext.request.contextPath}/listProduct/autoComplete",
                     type: "get",
                     data: {
                         keySearch: $('#keySearch').val(),
