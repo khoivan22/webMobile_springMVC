@@ -7,13 +7,15 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="<c:url value="/img/logo/favicon-32x32.png"/>">
     <!-- Plugins CSS File -->
-    <link rel="stylesheet" href="<c:url value="/webjars/bootstrap/4.5.2/css/bootstrap.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/assets/css/bootstrap.min.css"/>">
     <link rel="stylesheet" href="<c:url value="/assets/css/plugins/owl-carousel/owl.carousel.css"/>">
     <link rel="stylesheet" href="<c:url value="/assets/css/plugins/magnific-popup/magnific-popup.css"/>">
     <!-- Main CSS File -->
     <link rel="stylesheet" href="<c:url value="/assets/css/style.css"/>">
     <link rel="stylesheet" href="<c:url value="/assets/css/skins/skin-demo-4.css"/>">
     <link rel="stylesheet" href="<c:url value="/assets/css/demos/demo-4.css"/>">
+    <link rel="stylesheet" href="<c:url value="/webjars/font-awesome/4.7.0/css/font-awesome.min.css"/>">
+
 
     <!-- Plugins JS File -->
 
@@ -27,6 +29,7 @@
     <script src="<c:url value="/assets/js/main.js"/>"></script>
     <script src="<c:url value="/assets/js/demos/demo-4.js"/>"></script>
     <script src="<c:url value="/assets/js/jquery.magnific-popup.min.js"/>"></script>
+    <script src="<c:url value="/webjars/sweetalert/2.1.2/dist/sweetalert.min.js"/>"></script>
     <title>Title</title>
 
 </head>
@@ -97,7 +100,7 @@
                     <form action="${pageContext.request.contextPath}/listProduct/search" method="get">
                         <div class="header-search-wrapper search-wrapper-wide">
                             <label for="keySearch" class="sr-only">Search</label>
-                            <button class="btn btn-primary" type="submit" id="bt_search"><i class="icon-search"></i>
+                            <button class="btn btn-primary" type="submit" id="bt_search"><i class="fa fa-search"></i>
                             </button>
                             <input type="search" class="form-control" name="keySearch" id="keySearch"
                                    placeholder="Search product ..." required>
@@ -112,21 +115,32 @@
 
             <div class="header-right">
                 <div>
-                    <a href="#signin-modal" data-toggle="modal">
-                        <div class="icon">
-                            Sign in / Sign up
-                        </div>
-                    </a>
+                    <p>
+                    <div class="icon">
+                        <c:if test="${userDetail==null}">
+                            <a href="${pageContext.request.contextPath}/login">Sign in</a> / <a
+                                href="${pageContext.request.contextPath}/register">Sign up</a>
+                        </c:if>
+                        <c:if test="${userDetail!=null}">
+                            <a href="${pageContext.request.contextPath}/login">${userDetail.getUsername()}</a> / <a
+                                href="${pageContext.request.contextPath}/logout">Logout</a>
+                        </c:if>
+                    </div>
+                    </p>
 
                 </div><!-- End .cart-dropdown -->
             </div><!-- End .header-right -->
             <div class="header-right">
                 <div class="dropdown cart-dropdown">
-                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false" data-display="static">
+                    <a href="${pageContext.request.contextPath}/cart" class="dropdown-toggle">
                         <div class="icon">
-                            <i class="icon-shopping-cart"></i>
-                            <span class="cart-count">2</span>
+                            <i class="fa fa-cart-plus"></i>
+                            <c:if test="${userDetail==null}">
+                                <span class="cart-count">0</span>
+                            </c:if>
+                            <c:if test="${userDetail!=null}">
+                                <span class="cart-count">0</span>
+                            </c:if>
                         </div>
                         <p>Cart</p>
                     </a>
@@ -142,26 +156,8 @@
                 <div class="dropdown category-dropdown">
                     <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false" data-display="static" title="Browse Categories">
-                        Browse Categories <i class="icon-angle-down"></i>
+                        Browse Categories <i class="fa fa-angle-left"></i>
                     </a>
-
-                    <div class="dropdown-menu">
-                        <nav class="side-nav">
-                            <ul class="menu-vertical sf-arrows">
-                                <li class="item-lead"><a href="#">Daily offers</a></li>
-                                <li class="item-lead"><a href="#">Gift Ideas</a></li>
-                                <li><a href="#">Beds</a></li>
-                                <li><a href="#">Lighting</a></li>
-                                <li><a href="#">Sofas & Sleeper sofas</a></li>
-                                <li><a href="#">Storage</a></li>
-                                <li><a href="#">Armchairs & Chaises</a></li>
-                                <li><a href="#">Decoration </a></li>
-                                <li><a href="#">Kitchen Cabinets</a></li>
-                                <li><a href="#">Coffee & Tables</a></li>
-                                <li><a href="#">Outdoor Furniture </a></li>
-                            </ul><!-- End .menu-vertical -->
-                        </nav><!-- End .side-nav -->
-                    </div><!-- End .dropdown-menu -->
                 </div><!-- End .category-dropdown -->
             </div><!-- End .header-left -->
 
@@ -170,7 +166,7 @@
 
                     <ul class="menu sf-arrows" id="menu">
                         <li class="megamenu-container active">
-                            <a href="${pageContext.request.contextPath}/home" >Home</a>
+                            <a href="${pageContext.request.contextPath}/home">Home</a>
                         </li>
                     </ul>
                 </nav><!-- End .main-nav -->
@@ -182,13 +178,13 @@
     /*load menu*/
     $(document).ready(function () {
         $.ajax({
-            url: '${pageContext.request.contextPath}/listMenu',
+            url: '${pageContext.request.contextPath}/api/listMenu',
             type: 'GET',
             contentType: "application/json",
-            dataType:'json',
+            dataType: 'json',
             success: function (data) {
                 $.each(data, function (key, value) {
-                    $('#menu').append('<li><a href="${pageContext.request.contextPath}/listProduct/'+value.id_SUPPLIER+'/1" class="sf-with-ul">' + value.name_SUPPLIER + '</a></li>');
+                    $('#menu').append('<li><a href="${pageContext.request.contextPath}/listProduct/' + value.id_SUPPLIER + '/1" class="sf-with-ul">' + value.name_SUPPLIER + '</a></li>');
                 });
             },
             error: function () {

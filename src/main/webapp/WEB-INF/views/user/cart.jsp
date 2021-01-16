@@ -40,29 +40,37 @@
                                 </thead>
 
                                 <tbody>
-                                <tr>
-                                    <td class="product-col">
-                                        <div class="product">
-                                            <figure class="product-media">
-                                                <a href="#">
-                                                    <img src="" alt="Product image">
-                                                </a>
-                                            </figure>
+                                <c:forEach items="${listCart}" var="cart">
+                                    <tr>
+                                        <td class="product-col">
+                                            <div class="product">
+                                                <figure class="product-media">
+                                                    <a href="${pageContext.request.contextPath}/detail?idProduct=${cart.product.ID_PRODUCT}">
+                                                        <img src="<c:url value="${cart.product.listImg[0]}"/> "
+                                                             alt="Product image">
+                                                    </a>
+                                                </figure>
 
-                                            <h3 class="product-title">
-                                                <a href="#">Beige knitted elastic runner shoes</a>
-                                            </h3><!-- End .product-title -->
-                                        </div><!-- End .product -->
-                                    </td>
-                                    <td class="price-col">$84.00</td>
-                                    <td class="quantity-col">
-                                        <div class="cart-product-quantity">
-                                            <input type="number" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
-                                        </div><!-- End .cart-product-quantity -->
-                                    </td>
-                                    <td class="total-col">$84.00</td>
-                                    <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
-                                </tr>
+                                                <h3 class="product-title">
+                                                    <a href="${pageContext.request.contextPath}/detail?idProduct=${cart.product.ID_PRODUCT}">${cart.product.PRODUCT_NAME}</a>
+                                                </h3><!-- End .product-title -->
+                                            </div><!-- End .product -->
+                                        </td>
+                                        <td class="price-col">${cart.product.PRICE}</td>
+                                        <td class="quantity-col">
+                                            <div class="cart-product-quantity">
+                                                <i class="fa fa-minus-circle minus"><span hidden>${cart.product.ID_PRODUCT}</span></i>
+                                                <span style="margin-left: 5px;margin-right: 7px">${cart.amount}</span>
+                                                <i class="fa fa-plus-circle plus"><span hidden>${cart.product.ID_PRODUCT}</span></i>
+                                            </div><!-- End .cart-product-quantity -->
+                                        </td>
+                                        <td class="total-col">${cart.product.PRICE*cart.amount}</td>
+                                        <td class="remove-col">
+                                            <a href="${pageContext.request.contextPath}/cart/delete?idProduct=${cart.product.ID_PRODUCT}"
+                                               class="btn-remove"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr
+                                </c:forEach>
                                 </tbody>
                             </table><!-- End .table table-wishlist -->
 
@@ -73,18 +81,23 @@
 
                                 <table class="table table-summary">
                                     <tbody>
-                                    <tr class="summary-subtotal">
-                                        <td>Subtotal:</td>
-                                        <td>$160.00</td>
-                                    </tr><!-- End .summary-subtotal -->
+                                    <c:forEach items="${listCart}" var="cart">
+                                        <tr class="summary-subtotal">
+                                            <td style="font-size: 12px">${cart.product.PRODUCT_NAME}
+                                                x${cart.amount}</td>
+                                            <td style="font-size: 12px">${cart.product.PRICE*cart.amount}</td>
+                                        </tr>
+                                        <!-- End .summary-subtotal -->
+                                    </c:forEach>
                                     <tr class="summary-total">
                                         <td>Total:</td>
-                                        <td>$160.00</td>
+                                        <td>${totalPrice}</td>
                                     </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->
 
-                                <a href="checkout.html" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
+                                <a href="${pageContext.request.contextPath}/pay" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO
+                                    CHECKOUT</a>
                             </div><!-- End .summary -->
 
                         </aside><!-- End .col-lg-3 -->
@@ -97,5 +110,51 @@
     <%@include file="/WEB-INF/views/common/user/footer.jsp" %>
 </div><!-- End .page-wrapper -->
 </body>
+<script>
+    /**minus*/
+    $(document).ready(function () {
+        $(".minus").click(function () {
+            $.ajax({
+                url: "${pageContext.request.contextPath}/cart/minus",
+                type: "get",
+                data: {
+                    idProduct: $(this).find("span").html(),
+                },
+                success: function (data) {
+                    if(data===true) {
+                        window.location.reload();
+                    }
+                    else
+                        swal("Bạn chưa đăng nhập")
+                },
+                error: function (b) {
+                    alert("error")
+                }
+            });
+        });
+    });
+    /**plus*/
+    $(document).ready(function () {
+        $(".plus").click(function () {
+            $.ajax({
+                url: "${pageContext.request.contextPath}/cart/add",
+                type: "get",
+                data: {
+                    idProduct: $(this).find("span").html(),
+                },
+                success: function (data) {
+                    if(data===true) {
+                        window.location.reload();
+                    }
+                    else
+                        swal("Bạn chưa đăng nhập")
+                },
+                error: function (b) {
+                    alert("error")
+                }
+            });
+        });
+    });
 
+</script>
 </html>

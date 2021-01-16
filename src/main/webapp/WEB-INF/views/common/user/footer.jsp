@@ -132,7 +132,7 @@
                                 <p class="text-center">or sign in with</p>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <a href="#" class="btn btn-login btn-g"/>
+                                        <a href="#" class="btn btn-login btn-g"></a>
                                         <i class="icon-google"></i>
                                         Login With Google
                                         </a>
@@ -202,29 +202,30 @@
 
 <%---------------------------------------------%>
 <script>
-
+    /**search*/
     $(document).ready(function () {
         $('#keySearch').keyup(function () {
             $("#list-auto").empty();
-            if ($('#keySearch').val().trim().length!==0){
+            if ($('#keySearch').val().trim().length !== 0) {
                 $("#div-auto").css("height", "230px");
                 $.ajax({
-                    url: "${pageContext.request.contextPath}/listProduct/autoComplete",
+                    url: "${pageContext.request.contextPath}/api/autoComplete",
                     type: "get",
                     data: {
                         keySearch: $('#keySearch').val(),
                     },
                     success: function (data) {
-                        $.each(data,function (i, item) {
+                        $.each(data, function (i, item) {
                             $("#list-auto").append("<p class='list-group-item list-group-item-action'>" + item.product_NAME + "</p>");
                         });
                     },
                     error: function (b) {
                         alert("error")
                     }
-                });}
+                });
+            }
         });
-        $("#list-auto").on("click","p", function () {
+        $("#list-auto").on("click", "p", function () {
             $("#keySearch").val($(this).text());
             $("#list-auto").empty();
             $("#div-auto").css("height", "0px");
@@ -232,5 +233,26 @@
         $("#keySearch").click(function () {
             $("#div-auto").css("height", "0px");
         })
+    });
+    /**add cart*/
+    $(document).ready(function () {
+        $(".addCart").click(function () {
+$.ajax({
+    url: "${pageContext.request.contextPath}/cart/add",
+    type: "get",
+    data: {
+        idProduct: $(this).find("span").html(),
+    },
+    success: function (data) {
+       if(data===true)
+           swal("Đã thêm vào giỏ hàng")
+        else
+            swal("Bạn chưa đăng nhập")
+    },
+    error: function (b) {
+        alert("error")
+    }
+});
+        });
     });
 </script>

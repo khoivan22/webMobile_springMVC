@@ -15,7 +15,7 @@
         <%------------------------menu---------------------------%>
         <jsp:include page="../common/admin/menuAdmin.jsp"/>
         <!-- Main Content -->
-        <div class="main-content">
+        <div class="main-content col-12">
             <section class="section">
                 <div class="section-body">
                     <div class="row">

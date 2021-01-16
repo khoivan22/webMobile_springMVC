@@ -31,8 +31,8 @@ public class ManagerSupplierController {
     }
 
     @RequestMapping("add")
-    public String addPage(Model model) {
-        model.addAttribute("supp", new SupplierEntity());
+    public String addPage(Model model, SupplierEntity supplierEntity) {
+        model.addAttribute("supp", supplierEntity);
         model.addAttribute("par", "add");
         return "admin/addAndEditSupplier";
     }

@@ -9,7 +9,7 @@
     <jsp:include page="../common/admin/headAdmin.jsp"/>
 </head>
 <body>
-<div class="loader"></div>
+<%--<div class="loader"></div>--%>
 <div id="app">
     <div class="main-wrapper main-wrapper-1">
         <%---------------------------header----------------------%>
@@ -17,7 +17,7 @@
         <%---------------------------menu----------------------%>
         <jsp:include page="../common/admin/menuAdmin.jsp"/>
         <!-- Main Content -->
-        <div class="main-content">
+        <div class="main-content" style="padding-left: 185px">
             <section class="section">
                 <div class="section-body">
                     <div class="row">
@@ -26,11 +26,11 @@
                                 <div class="card-header ">
                                     <div class="col-sm-12 col-md-6">
                                         <a href="${pageContext.request.contextPath}/admin/managerItem/add"
-                                           class="btn btn-icon icon-left btn-warning"><i
-                                                class="fas fa-plus-circle"></i>
+                                           class="btn btn-icon icon-left btn-warning">
+                                            <i class="fa fa-plus-circle"></i>
                                             add item</a>
                                         <button id="deletes" class="btn btn-icon icon-left btn-warning">
-                                            <i class="fas fa-trash"></i>
+                                            <i class="fa fa-trash"></i>
                                             delete item
                                         </button>
                                     </div>
@@ -134,14 +134,7 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function () {
 
-    });
-</script>
-<div id="dialog" style="display: none" align="center">
-    Do you want to delete this record?
-</div>
 
 <jsp:include page="../common/admin/footerAdmin.jsp"/>
 <%--<script src="<c:url value="/assetAdmin/js/page/datatables.js"/>"></script>--%>

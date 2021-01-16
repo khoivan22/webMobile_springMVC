@@ -17,6 +17,7 @@ import java.util.List;
 public class ProductEntity {
     @Id
     private String ID_PRODUCT;
+
     private String PRODUCT_NAME;
     private double PRICE;
     private String IMG;
@@ -36,20 +37,12 @@ public class ProductEntity {
     @JoinColumn(name = "ID_ITEMS", nullable = false)
     private ItemsEntity item;
 
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ID_SUPPLIER", nullable = false)
     private SupplierEntity supp;
 
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
-    private List<CommentEntity> comment;
-
-    @JsonIgnore
-    @ManyToMany(mappedBy = "listProduct", fetch = FetchType.LAZY)
-    List<BillEntity> listBill;
-
-    @JsonIgnore
     @Transient
     private String[] listImg;
 
@@ -60,5 +53,4 @@ public class ProductEntity {
         listImg = getIMG().split("~");
         return listImg;
     }
-
-}
+ }

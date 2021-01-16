@@ -1,4 +1,4 @@
-package vn.nlu.fit.intercrepter;
+package vn.nlu.fit.interpreter;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <%@include file="/WEB-INF/views/common/user/header.jsp" %>
@@ -22,37 +23,41 @@
                 <div class="container">
                     <div class="checkout-discount">
                     </div><!-- End .checkout-discount -->
-                    <form action="#">
+                    <form:form method="post" modelAttribute="bill" action="${pageContext.request.contextPath}/pay/buy">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Name *</label>
-                                        <input type="text" class="form-control" required>
+                                        <form:input path="user.FULLNAME" cssClass="form-control" required="required"/>
                                     </div><!-- End .col-sm-6 -->
-
                                     <div class="col-sm-6">
                                         <label>Phone *</label>
-                                        <input type="" class="form-control" required>
+                                        <form:input  path="phone" cssClass="form-control"
+                                                    required="required"/>
                                     </div><!-- End .col-sm-6 -->
                                 </div><!-- End .row -->
 
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Town / City *</label>
-                                        <input type="text" class="form-control" required>
+                                        <form:input path="address.city" cssClass="form-control" required="required"/>
                                     </div><!-- End .col-sm-6 -->
 
                                     <div class="col-sm-6">
-                                        <label>State / County *</label>
-                                        <input type="text" class="form-control" required>
+                                        <label>District *</label>
+                                        <form:input path="address.district" cssClass="form-control"
+                                                    required="required"/>
                                     </div><!-- End .col-sm-6 -->
                                 </div><!-- End .row -->
-                                <label>Street address *</label>
-                                <input type="text" class="form-control" placeholder="House number and Street name" required>
+                                <label>Home address *</label>
+                                <form:input path="address.addressHome" cssClass="form-control"
+                                            placeholder="House number and Street name" required="required"/>
 
-                                <label>Order notes (optional)</label>
-                                <textarea class="form-control" cols="30" rows="4" placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
+                                <label>Note </label>
+                                <form:textarea cssClass="form-control" path="note" cols="30" rows="4"
+                                               placeholder="Notes about your order, e.g. special notes for delivery"/>
+                                <form:hidden path="totalPrice" value="${bill.totalPrice}"/>
                             </div><!-- End .col-lg-9 -->
                             <aside class="col-lg-6">
                                 <div class="summary">
@@ -61,33 +66,35 @@
                                     <table class="table table-summary">
                                         <thead>
                                         <tr>
-                                            <th>sản phẩm</th>
+                                            <th>Product</th>
                                             <th></th>
-                                            <th>tổng tiền</th>
+                                            <th> Subtotal price</th>
                                         </tr>
                                         </thead>
 
                                         <tbody>
+                                        <c:forEach var="cart" items="${listCart}">
                                         <tr>
-                                            <td>iphone 6s plus</td>
-                                            <td>x2</td>
-                                            <td>$84.00</td>
+                                            <td>${cart.product.PRODUCT_NAME}</td>
+                                            <td>x${cart.amount}</td>
+                                            <td>${cart.product.PRICE*cart.amount}</td>
                                         </tr>
+                                        </c:forEach>
                                         <tr class="summary-total">
-                                            <td>tổng tiền:</td>
+                                            <td>total price:</td>
                                             <td></td>
-                                            <td>$160.00</td>
+                                            <td>${bill.totalPrice}</td>
                                         </tr><!-- End .summary-total -->
                                         </tbody>
                                     </table><!-- End .table table-summary -->
                                     <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
-                                        <span >đặt hàng</span>
-<%--                                        <span class="btn-hover-text">Proceed to Checkout</span>--%>
+                                        <span>Buy</span>
                                     </button>
                                 </div><!-- End .summary -->
                             </aside><!-- End .col-lg-3 -->
-                        </div><!-- End .row -->
-                    </form>
+                        </div>
+                        <!-- End .row -->
+                    </form:form>
                 </div><!-- End .container -->
             </div><!-- End .checkout -->
         </div><!-- End .page-content -->

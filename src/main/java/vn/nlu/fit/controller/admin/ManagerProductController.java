@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import vn.nlu.fit.entity.CartEntity;
 import vn.nlu.fit.entity.ProductEntity;
+import vn.nlu.fit.repositories.CartRepository;
 import vn.nlu.fit.repositories.ItemsRepository;
 import vn.nlu.fit.repositories.ProductRepository;
 import vn.nlu.fit.repositories.SupplerRepository;
@@ -31,7 +32,6 @@ public class ManagerProductController {
     @Autowired
     ItemsRepository itemsRepository;
 
-
     @RequestMapping("{numPage}")
     public String lisAllProduct(Model model, @PathVariable int numPage) {
         Pageable paging = PageRequest.of(numPage - 1, 8);
@@ -47,8 +47,8 @@ public class ManagerProductController {
 
 
     @RequestMapping("add")
-    public String addPage(Model model) {
-        model.addAttribute("product", new ProductEntity());
+    public String addPage(Model model,ProductEntity productEntity) {
+        model.addAttribute("product", productEntity);
         model.addAttribute("listSupplier", supplerRepository.findAll());
         model.addAttribute("listItem", itemsRepository.findAll());
         model.addAttribute("par", "add");

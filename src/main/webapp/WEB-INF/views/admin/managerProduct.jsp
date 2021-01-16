@@ -17,7 +17,7 @@
         <%---------------------------menu----------------------%>
         <jsp:include page="../common/admin/menuAdmin.jsp"/>
         <!-- Main Content -->
-        <div class="main-content">
+        <div class="main-content" style="padding-left: 185px">
             <section class="section">
                 <div class="section-body">
                     <div class="row">
@@ -27,11 +27,11 @@
                                     <div class=" col-md-6">
                                         <a href="col-sm-12${pageContext.request.contextPath}/admin/managerProduct/add"
                                            class="btn btn-icon icon-left btn-warning"><i
-                                                class="fas fa-plus-circle"></i>
+                                                class="fa fa-plus-circle"></i>
                                             add product</a>
 
                                         <button id="deletes" class="btn btn-icon icon-left btn-warning">
-                                            <i class="fas fa-trash"></i>
+                                            <i class="fa fa-trash"></i>
                                             delete product
                                         </button>
                                     </div>
@@ -204,6 +204,7 @@
     /**delete*/
     $(document).ready(function () {
         $('.delete').click(function () {
+            alert($(this).find("input").val())
             let ids = [];
             ids.push($(this).find("input").val())
             if (ids.length > 0) {

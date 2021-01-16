@@ -19,7 +19,7 @@
         <%---------------------------menu----------------------%>
         <jsp:include page="../common/admin/menuAdmin.jsp"/>
         <!-- Main Content -->
-        <div class="main-content">
+        <div class="main-content" style="padding-left: 185px">
             <section class="section">
                 <form:form action="/web_mobile/admin/managerItem/${par}" modelAttribute="item" method="post">
 
@@ -37,7 +37,6 @@
                                             <div class="d-flex"><input disabled class="form-control" id="idSupp" value="${item.ID_ITEMS}"
                                                                        required="required">
                                             </div>
-                                            <form:errors cssClass="text-danger" path="ID_ITEMS"/>
                                         </div>
                                     </c:when>
                                     <c:otherwise>

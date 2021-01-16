@@ -1,5 +1,6 @@
 package vn.nlu.fit.springSecurity;
 
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,6 +9,7 @@ import vn.nlu.fit.entity.UserEntity;
 import java.util.Collection;
 import java.util.Collections;
 
+@Data
 public class MyUserDetail implements UserDetails {
 
     private final UserEntity user;

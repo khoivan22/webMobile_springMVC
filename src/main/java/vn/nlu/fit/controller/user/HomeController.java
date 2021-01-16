@@ -22,9 +22,6 @@ public class HomeController {
 
     @Autowired
     ProductRepository product;
-    @Autowired
-    SupplerRepository supplier;
-
     @RequestMapping("/home")
     public String home(Model model) {
         model.addAttribute("listProduct", product.findAll());
@@ -32,12 +29,5 @@ public class HomeController {
         model.addAttribute("top10Star", product.getTop10Star());
         model.addAttribute("top10Sale", product.getTop10Sale());
         return "user/home";
-    }
-
-    @RequestMapping("/listMenu")
-    public @ResponseBody
-    List<SupplierEntity> listMenu() {
-
-        return supplier.findAll();
     }
 }

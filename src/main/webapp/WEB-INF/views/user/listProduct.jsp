@@ -59,14 +59,13 @@
                                             <img src="<c:url value="${product.listImg[0]}"/>" alt="Product image"
                                                  class="product-image">
                                         </a>
+                                        <div class="product-action ">
 
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                        </div><!-- End .product-action -->
-
-                                        <div class="product-action action-icon-top">
-                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                            <a href="#" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                                            <a href="#" class="btn-product addCart"
+                                               title="Add to cart"><span hidden>${product.ID_PRODUCT}</span><i class="fa fa-cart-plus"></i>
+                                            </a>
+                                            <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}"
+                                               class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 

@@ -18,28 +18,31 @@
 
             <tbody>
             <tr>
-                <td>Tên khách hàng: </td><td >Văn Công Khôi</td>
+                <td>Customer: </td><td >${bill.user.FULLNAME}</td>
             </tr>
             <tr>
-                <td>sdt: </td><td >1234567890</td>
+                <td>Phone: </td><td >${bill.phone}</td>
             </tr>
             <tr>
-                <td>địa chỉ: </td><td >q9, TPHCM</td>
+                <td>Date: </td><td >${bill.date}</td>
             </tr>
             <tr>
-                <td>sản phẩm: </td><td >iphone 6s x2, iphone 8s x2</td>
+                <td>Address: </td><td >${bill.address.toString()}</td>
+            </tr>
+            <tr>
+                <td>Product: </td><td ></td>
             </tr>
 
             <tr class="summary-total">
-                <td>tổng tiền:</td>
+                <td>Total price:</td>
                 <td>$160.00</td>
             </tr><!-- End .summary-total -->
             </tbody>
         </table><!-- End .table table-summary -->
-        <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
+        <a href="${pageContext.request.contextPath}/home" class="btn btn-outline-primary-2 btn-order btn-block">
             <span >Trở về</span>
             <%--                                        <span class="btn-hover-text">Proceed to Checkout</span>--%>
-        </button>
+        </a>
     </div><!-- End .summary -->
 </div>
 </body>

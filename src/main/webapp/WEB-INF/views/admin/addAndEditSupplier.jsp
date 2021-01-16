@@ -19,7 +19,7 @@
         <%---------------------------menu----------------------%>
         <jsp:include page="../common/admin/menuAdmin.jsp"/>
         <!-- Main Content -->
-        <div class="main-content">
+        <div class="main-content" style="padding-left: 185px">
             <section class="section">
                 <form:form action="/web_mobile/admin/managerSupplier/${par}" modelAttribute="supp" method="post">
 

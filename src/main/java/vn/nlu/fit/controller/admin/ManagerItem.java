@@ -31,8 +31,8 @@ public class ManagerItem {
     }
 
     @RequestMapping("add")
-    public String addPage(Model model) {
-        model.addAttribute("item", new ItemsEntity());
+    public String addPage(Model model,ItemsEntity itemsEntity) {
+        model.addAttribute("item", itemsEntity);
         model.addAttribute("par", "add");
         return "admin/addAndEditItem";
     }

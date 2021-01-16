@@ -17,7 +17,7 @@
         <%---------------------------menu----------------------%>
         <jsp:include page="../common/admin/menuAdmin.jsp"/>
         <!-- Main Content -->
-        <div class="main-content">
+        <div class="main-content" style="padding-left: 185px">
             <section class="section">
                 <div class="section-body">
                     <div class="row">
@@ -26,10 +26,10 @@
                                 <div class="card-header ">
                                     <div class="col-sm-12 col-md-6">
                                         <a href="${pageContext.request.contextPath}/admin/managerSupplier/add" class="btn btn-icon icon-left btn-warning"><i
-                                                class="fas fa-plus-circle"></i>
+                                                class="fa fa-plus-circle"></i>
                                             add supplier</a>
                                         <button id="deletes" class="btn btn-icon icon-left btn-warning">
-                                            <i  class="fas fa-trash"></i>
+                                            <i  class="fa fa-trash"></i>
                                             delete product
                                         </button>
                                     </div>

@@ -1,6 +1,6 @@
 <html>
 <%@include file="/WEB-INF/views/common/user/header.jsp" %>
-<body >
+<body>
 <div class="page-wrapper">
     <main class="main">
         <%--------------------------------------------------------------------------%>
@@ -33,7 +33,7 @@
                                         </span>
                                 </div><!-- End .intro-price -->
 
-                                <a href="category.html" class="btn btn-primary btn-round">
+                                <a href="" class="btn btn-primary btn-round">
                                     <span>Shop More</span>
                                     <i class="icon-long-arrow-right"></i>
                                 </a>
@@ -76,7 +76,7 @@
             <div class="cat-blocks-container">
                 <div class="row">
                     <div class="col-6 col-sm-4 col-lg-2">
-                        <a href="category.html" class="cat-block">
+                        <a href="#" class="cat-block">
                             <figure>
                                     <span>
                                         <img src="<c:url value="/img/logo/1.png"/>"
@@ -274,38 +274,43 @@
 
                                 <div class="product product-2">
                                     <figure class="product-media">
-                                        <span class="product-label label-circle label-top">Top</span>
+                                        <span class="product-label label-circle label-top">top</span>
                                         <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">
                                             <img src="<c:url value="${product.listImg[0]}"/>"
-                                                 alt="Product image" class="product-image">
+                                                 alt="product image" class="product-image">
                                         </a>
 
                                             <%--                                <div class="product-action-vertical">--%>
-                                            <%--                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>--%>
-                                            <%--                                </div><!-- End .product-action -->--%>
+                                            <%--                                    <a href="#" class="btn-product-icon btn-wishlist" title="add to wishlist"></a>--%>
+                                            <%--                                </div><!-- end .product-action -->--%>
 
-                                        <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart"
-                                               title="Add to cart"><span>add to cart</span></a>
-                                            <a href="#" class="btn-product btn-quickview"
-                                               title="Quick view"><span>quick view</span></a>
+
+                                        <div class="product-action ">
+
+                                            <a class="btn-product addCart"
+                                               title="Add to cart"><span hidden>${product.ID_PRODUCT}</span><i class="fa fa-cart-plus"></i>
+                                            </a>
+                                            <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}"
+                                               class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
                                         </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
+                                    </figure><!-- end .product-media -->
 
                                     <div class="product-body">
-                                        <h3 class="product-title"><a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">${product.PRODUCT_NAME}</a></h3>
-                                        <!-- End .product-title -->
+                                        <h3 class="product-title"><a
+                                                href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">${product.PRODUCT_NAME}</a>
+                                        </h3>
+                                        <!-- end .product-title -->
                                         <div class="product-price">
                                                 ${product.PRICE+''}đ
-                                        </div><!-- End .product-price -->
+                                        </div><!-- end .product-price -->
                                         <div class="ratings-container">
                                             <div class="ratings">
                                                 <div class="ratings-val"
                                                      style="width: ${product.STAR_MEDIUM*20}%;"></div>
-                                                <!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
-                                        </div><!-- End .rating-container -->
-                                    </div><!-- End .product-body -->
+                                                <!-- end .ratings-val -->
+                                            </div><!-- end .ratings -->
+                                        </div><!-- end .rating-container -->
+                                    </div><!-- end .product-body -->
                                 </div>
                                 <!-- End .product -->
                             </c:if>
@@ -354,16 +359,19 @@
                                                title="Add to wishlist"></a>
                                         </div><!-- End .product-action -->
 
-                                        <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart"
-                                               title="Add to cart"><span>add to cart</span></a>
-                                            <a href="#" class="btn-product btn-quickview"
-                                               title="Quick view"><span>quick view</span></a>
+                                        <div class="product-action ">
+                                            <a class="btn-product addCart"
+                                               title="Add to cart"><span hidden>${product.ID_PRODUCT}</span><i class="fa fa-cart-plus"></i>
+                                            </a>
+                                            <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}"
+                                               class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 
                                     <div class="product-body">
-                                        <h3 class="product-title"><a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">${product.PRODUCT_NAME}</a></h3>
+                                        <h3 class="product-title"><a
+                                                href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">${product.PRODUCT_NAME}</a>
+                                        </h3>
                                         <!-- End .product-title -->
                                         <div class="product-price">
                                                 ${product.PRICE}d
@@ -418,11 +426,13 @@
                                                  alt="Product image" class="product-image">
                                         </a>
 
-                                        <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart"
-                                               title="Add to cart"><span>add to cart</span></a>
-                                            <a href="#" class="btn-product btn-quickview"
-                                               title="Quick view"><span>quick view</span></a>
+                                        <div class="product-action ">
+                                            <a class="btn-product addCart"
+                                               title="Add to cart"> <span hidden>${product.ID_PRODUCT}</span><i
+                                                    class="fa fa-cart-plus"></i>
+                                            </a>
+                                            <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}"
+                                               class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 
@@ -430,7 +440,9 @@
                                         <div class="product-cat">
                                             <a href="#">Laptops</a>
                                         </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">${product.PRODUCT_NAME}</a></h3>
+                                        <h3 class="product-title"><a
+                                                href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">${product.PRODUCT_NAME}</a>
+                                        </h3>
                                         <!-- End .product-title -->
                                         <div class="product-price">
                                                 ${product.PRICE}d
@@ -491,11 +503,15 @@
                                                title="Add to wishlist"></a>
                                         </div><!-- End .product-action -->
 
-                                        <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart"
-                                               title="Add to cart"><span>add to cart</span></a>
-                                            <a href="#" class="btn-product btn-quickview"
-                                               title="Quick view"><span>quick view</span></a>
+                                        <div class="product-action ">
+
+
+                                            <a class="btn-product addCart"
+                                               title="Add to cart"><span hidden>${product.ID_PRODUCT}</span><i
+                                                    class="fa fa-cart-plus"></i>
+                                            </a>
+                                            <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}"
+                                               class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 
@@ -503,7 +519,9 @@
                                         <div class="product-cat">
                                             <a href="#">Cell Phone</a>
                                         </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">${product.PRODUCT_NAME}</a></h3>
+                                        <h3 class="product-title"><a
+                                                href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">${product.PRODUCT_NAME}</a>
+                                        </h3>
                                         <!-- End .product-title -->
                                         <div class="product-price">
                                             <span class="new-price">${product.PRICE}</span>
@@ -617,15 +635,22 @@
                                                        title="Add to wishlist"></a>
                                                 </div><!-- End .product-action -->
 
-                                                <div class="product-action">
-                                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                                    <a href="#" class="btn-product btn-quickview"
-                                                       title="Quick view"><span>quick view</span></a>
+                                                <div class="product-action ">
+
+
+                                                    <a class="btn-product addCart "
+                                                       title="Add to cart"><i class="fa fa-cart-plus"> <span
+                                                            hidden>${product.ID_PRODUCT}</span></i>
+                                                    </a>
+                                                    <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}"
+                                                       class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
 
                                             <div class="product-body">
-                                                <h3 class="product-title"><a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">${product.PRODUCT_NAME}</a></h3>
+                                                <h3 class="product-title"><a
+                                                        href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">${product.PRODUCT_NAME}</a>
+                                                </h3>
                                                 <!-- End .product-title -->
                                                 <div class="product-price">
                                                         ${product.PRICE}
@@ -683,10 +708,16 @@
                                                        title="Add to wishlist"></a>
                                                 </div><!-- End .product-action -->
 
-                                                <div class="product-action">
-                                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                                    <a href="#" class="btn-product btn-quickview"
-                                                       title="Quick view"><span>quick view</span></a>
+                                                <div class="product-action ">
+
+
+                                                    <a class="btn-product addCart"
+                                                       title="Add to cart"> <span hidden>${product.ID_PRODUCT}</span><i
+                                                            class="fa fa-cart-plus"></i>
+                                                    </a>
+
+                                                    <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}"
+                                                       class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
 
@@ -694,10 +725,11 @@
                                                 <div class="product-cat">
                                                     <a href="#">Tablets</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">${product.PRODUCT_NAME}
-                                                    256GB </a></h3><!-- End .product-title -->
+                                                <h3 class="product-title"><a
+                                                        href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">${product.PRODUCT_NAME}</a>
+                                                </h3><!-- End .product-title -->
                                                 <div class="product-price">
-                                                    $899.99
+                                                        ${product.PRICE}
                                                 </div><!-- End .product-price -->
                                                 <div class="ratings-container">
                                                     <div class="ratings">
@@ -753,24 +785,28 @@
                                                        title="Add to wishlist"></a>
                                                 </div><!-- End .product-action -->
 
-                                                <div class="product-action">
-                                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                                    <a href="#" class="btn-product btn-quickview"
-                                                       title="Quick view"><span>quick view</span></a>
+                                                <div class="product-action ">
+                                                    <a class="btn-product addCart"
+                                                       title="Add to cart"> <span hidden>${product.ID_PRODUCT}</span><i
+                                                            class="fa fa-cart-plus"></i>
+                                                    </a>
+                                                    <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}"
+                                                       class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
                                                 </div><!-- End .product-action -->
                                             </figure><!-- End .product-media -->
 
                                             <div class="product-body">
 
-                                                <h3 class="product-title"><a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">${product.PRODUCT_NAME}
+                                                <h3 class="product-title"><a href="">${product.PRODUCT_NAME}
                                                     Case</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
-                                                        ${product.PRICE}d
+                                                        ${product.PRICE}
                                                 </div><!-- End .product-price -->
                                                 <div class="ratings-container">
                                                     <div class="ratings">
                                                         <div class="ratings-val"
                                                              style="width: ${product.STAR_MEDIUM*20}%;"></div>
+                                                            ${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}
                                                         <!-- End .ratings-val -->
                                                     </div><!-- End .ratings -->
                                                     <span class="ratings-text">( 4 Reviews )</span>
@@ -807,9 +843,9 @@
                 </div><!-- End .heading-right -->
             </div><!-- End .heading -->
 
-                <div class="products">
-                    <div class="row justify-content-center">
-                        <c:forEach var="i" begin="1" end="8">
+            <div class="products">
+                <div class="row justify-content-center">
+                    <c:forEach var="i" begin="1" end="8">
                         <div class="col-6 col-md-4 col-lg-3">
                             <div class="product product-2">
                                 <figure class="product-media">
@@ -818,15 +854,20 @@
                                         <img src="<c:url value="${listProduct.get(i).listImg[0]}"/>"
                                              alt="Product image" class="product-image">
                                     </a>
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart"
-                                           title="Add to cart"><span>add to cart</span></a>
-                                        <a href="#" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                                    <div class="product-action ">
+                                        <a class="btn-product addCart"
+                                           title="Add to cart"> <span hidden>${listProduct.get(i).ID_PRODUCT}</span><i
+                                                class="fa fa-cart-plus"></i>
+                                        </a>
+                                        <a href="${pageContext.request.contextPath}/detail?idProduct=${listProduct.get(i).ID_PRODUCT}"
+                                           class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
 
                                 <div class="product-body">
-                                    <h3 class="product-title"><a href="${pageContext.request.contextPath}/detail?idProduct=${listProduct.get(i).ID_PRODUCT}">${listProduct.get(i).PRODUCT_NAME}</a></h3>
+                                    <h3 class="product-title"><a
+                                            href="${pageContext.request.contextPath}/detail?idProduct=${listProduct.get(i).ID_PRODUCT}">${listProduct.get(i).PRODUCT_NAME}</a>
+                                    </h3>
                                     <!-- End .product-title -->
                                     <div class="product-price">
                                         <span class="new-price">$279.99</span>
@@ -843,11 +884,12 @@
                                 </div><!-- End .product-body -->
                             </div><!-- End .product -->
 
-                        </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-                            </c:forEach>
-                    </div><!-- End .row -->
-                </div>
-                <!-- End .products -->
+                        </div>
+                        <!-- End .col-sm-6 col-md-4 col-lg-3 -->
+                    </c:forEach>
+                </div><!-- End .row -->
+            </div>
+            <!-- End .products -->
 
         </div><!-- End .container -->
 
@@ -901,7 +943,7 @@
                     <div class="col-sm-6 col-lg-3">
                         <div class="icon-box icon-box-side">
                                 <span class="icon-box-icon text-dark">
-                                    <i class="icon-life-ring"/>"></i>
+                                    <i class="icon-life-ring"></i>
                                 </span>
 
                             <div class="icon-box-content">
@@ -917,7 +959,6 @@
 </div><!-- End .page-wrapper -->
 
 <%@include file="/WEB-INF/views/common/user/footer.jsp" %>
-</div><!-- End .modal -->
 </body>
 
 </html>

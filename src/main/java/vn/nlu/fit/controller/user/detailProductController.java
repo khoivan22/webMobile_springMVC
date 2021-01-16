@@ -5,19 +5,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import vn.nlu.fit.service.ProductService;
+import vn.nlu.fit.repositories.ProductRepository;
 
 @Controller
 @RequestMapping("detail")
 public class detailProductController {
     @Autowired
-    ProductService product;
+    ProductRepository productRepository;
 
     @RequestMapping
     public String detail(Model model, @RequestParam String idProduct) {
-        if (product.findById(idProduct).isPresent()) {
-            model.addAttribute("product",product.findById(idProduct).get());
-                System.out.println(product.findById(idProduct).get().getConfig().getCAMERA_BACK());
+        if (productRepository.findById(idProduct).isPresent()) {
+            model.addAttribute("product", productRepository.findById(idProduct).get());
+                System.out.println(productRepository.findById(idProduct).get().getConfig().getCAMERA_BACK());
         }
         return "user/detailProduct";
     }

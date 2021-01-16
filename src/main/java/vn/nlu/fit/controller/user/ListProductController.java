@@ -47,10 +47,6 @@ public class ListProductController {
         return "redirect:/listProduct/search/" + keySearch + "/1";
     }
 
-    @GetMapping("autoComplete")
-    public @ResponseBody
-    List<ProductEntity> autoComplete(@RequestParam("keySearch") String keySearch) {return product.seach(keySearch);}
-
     @RequestMapping("{idSupplier}/{numPage}")
     public String lisSupplierProduct(Model model, @PathVariable String idSupplier, @PathVariable int numPage) {
         Pageable paging = PageRequest.of(numPage - 1, 12);

@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import vn.nlu.fit.springSecurity.MySimpleUrlAuthenticationSuccessHandler;
 import vn.nlu.fit.springSecurity.MyUserDetailService;
 
 import javax.sql.DataSource;
@@ -28,6 +29,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private DataSource dataSource;
+
+    @Autowired
+    MySimpleUrlAuthenticationSuccessHandler successHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -47,24 +51,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/cart").hasRole("USER")
-                .antMatchers("/login").permitAll()
-                .antMatchers("/**").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/cart/**", "/pay/**").hasAnyRole("USER","ADMIN")
+                .antMatchers("/login/**","/register/**").anonymous()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .usernameParameter("USER_NAME")
                 .passwordParameter("PASSWORD")
-                .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/home", true)
-                .failureUrl("/login")
-//                .failureHandler(authenticationFailureHandler())
-                .and()
-                .logout()
-                .logoutUrl("/perform_logout")
-                .deleteCookies("JSESSIONID")
-//                .logoutSuccessHandler(logoutSuccessHandler());
+                .successHandler(successHandler)
+                .failureUrl("/login?error")
+                .permitAll()
         ;
     }
 
