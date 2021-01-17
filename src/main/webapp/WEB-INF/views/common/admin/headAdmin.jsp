@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="<c:url value="/assets/css/bootstrap.min.css"/>">
     <link rel="stylesheet" href="<c:url value="/assetAdmin/css/custom.css"/>">
     <link rel="stylesheet" href="<c:url value="/webjars/font-awesome/4.7.0/css/font-awesome.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/assets/css/skins/skin-demo-2.css"/>">
     <link rel="stylesheet" href="<c:url value="/assetAdmin/bundles/pretty-checkbox/pretty-checkbox.min.css"/>">
     <!-- Custom style CSS -->
     <%--    <link rel="stylesheet" href="<c:url value="/assetAdmin/css/custom.css"/>">--%>

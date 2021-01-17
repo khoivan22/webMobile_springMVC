@@ -24,7 +24,7 @@ public class HomeController {
     ProductRepository product;
     @RequestMapping("/home")
     public String home(Model model) {
-        model.addAttribute("listProduct", product.findAll());
+        model.addAttribute("listProduct", product.findByACTIVE(1));
         model.addAttribute("top10Price", product.getTop10Price());
         model.addAttribute("top10Star", product.getTop10Star());
         model.addAttribute("top10Sale", product.getTop10Sale());

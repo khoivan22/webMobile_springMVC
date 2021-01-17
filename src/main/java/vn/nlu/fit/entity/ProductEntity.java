@@ -43,6 +43,10 @@ public class ProductEntity {
     @JoinColumn(name = "ID_SUPPLIER", nullable = false)
     private SupplierEntity supp;
 
+    @OneToMany(cascade =CascadeType.REMOVE, fetch = FetchType.LAZY,mappedBy = "product")
+    @JsonIgnore
+    private List<CartEntity> listCart;
+
     @Transient
     private String[] listImg;
 

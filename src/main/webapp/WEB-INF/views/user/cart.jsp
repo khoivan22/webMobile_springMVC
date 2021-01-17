@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: vkhoi
@@ -56,7 +57,7 @@
                                                 </h3><!-- End .product-title -->
                                             </div><!-- End .product -->
                                         </td>
-                                        <td class="price-col">${cart.product.PRICE}</td>
+                                        <td class="product-title"> <fmt:formatNumber type="number" groupingUsed="true">${cart.product.PRICE}</fmt:formatNumber> đ</td>
                                         <td class="quantity-col">
                                             <div class="cart-product-quantity">
                                                 <i class="fa fa-minus-circle minus"><span hidden>${cart.product.ID_PRODUCT}</span></i>
@@ -64,7 +65,7 @@
                                                 <i class="fa fa-plus-circle plus"><span hidden>${cart.product.ID_PRODUCT}</span></i>
                                             </div><!-- End .cart-product-quantity -->
                                         </td>
-                                        <td class="total-col">${cart.product.PRICE*cart.amount}</td>
+                                        <td class="product-title"> <fmt:formatNumber type="number" groupingUsed="true">${cart.product.PRICE*cart.amount}</fmt:formatNumber> đ</td>
                                         <td class="remove-col">
                                             <a href="${pageContext.request.contextPath}/cart/delete?idProduct=${cart.product.ID_PRODUCT}"
                                                class="btn-remove"><i class="fa fa-trash"></i></a>
@@ -85,13 +86,13 @@
                                         <tr class="summary-subtotal">
                                             <td style="font-size: 12px">${cart.product.PRODUCT_NAME}
                                                 x${cart.amount}</td>
-                                            <td style="font-size: 12px">${cart.product.PRICE*cart.amount}</td>
+                                            <td style="font-size: 12px"><fmt:formatNumber type="number" groupingUsed="true">${cart.product.PRICE*cart.amount}</fmt:formatNumber> đ</td>
                                         </tr>
                                         <!-- End .summary-subtotal -->
                                     </c:forEach>
                                     <tr class="summary-total">
                                         <td>Total:</td>
-                                        <td>${totalPrice}</td>
+                                        <td class="product-title"><fmt:formatNumber type="number" groupingUsed="true">${totalPrice}</fmt:formatNumber> đ</td>
                                     </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->

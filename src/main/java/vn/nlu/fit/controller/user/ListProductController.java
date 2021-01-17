@@ -24,7 +24,7 @@ public class ListProductController {
     @RequestMapping("{numPage}")
     public String lisAllProduct(Model model, @PathVariable int numPage) {
         Pageable paging = PageRequest.of(numPage - 1, 12);
-        Page<ProductEntity> pageTuts = product.findAll(paging);
+        Page<ProductEntity> pageTuts = product.findByACTIVE(1,paging);
         model.addAttribute("pageTuts", pageTuts);
         return "user/listProduct";
     }

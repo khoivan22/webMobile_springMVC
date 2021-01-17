@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 
 <html>
 <%@include file="/WEB-INF/views/common/user/header.jsp" %>
@@ -77,13 +78,13 @@
                                         <tr>
                                             <td>${cart.product.PRODUCT_NAME}</td>
                                             <td>x${cart.amount}</td>
-                                            <td>${cart.product.PRICE*cart.amount}</td>
+                                            <td><fmt:formatNumber type="number" groupingUsed="true">${cart.product.PRICE*cart.amount}</fmt:formatNumber> đ</td>
                                         </tr>
                                         </c:forEach>
                                         <tr class="summary-total">
                                             <td>total price:</td>
                                             <td></td>
-                                            <td>${bill.totalPrice}</td>
+                                            <td><fmt:formatNumber type="number" groupingUsed="true">${bill.totalPrice}</fmt:formatNumber> đ</td>
                                         </tr><!-- End .summary-total -->
                                         </tbody>
                                     </table><!-- End .table table-summary -->

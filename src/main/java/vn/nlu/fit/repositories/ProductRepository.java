@@ -31,7 +31,6 @@ public interface ProductRepository extends JpaRepository<ProductEntity, String> 
     List<ProductEntity> ok();
 
     List<ProductEntity> findByACTIVE(int active);
-
-
+    Page<ProductEntity> findByACTIVE(int active,Pageable pageable);
 
 }

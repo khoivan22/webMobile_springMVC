@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
 <%@include file="/WEB-INF/views/common/user/header.jsp" %>
 <body>
@@ -285,10 +286,10 @@
                                             <%--                                </div><!-- end .product-action -->--%>
 
 
-                                        <div class="product-action ">
-
-                                            <a class="btn-product addCart"
-                                               title="Add to cart"><span hidden>${product.ID_PRODUCT}</span><i class="fa fa-cart-plus"></i>
+                                        <div class="product-action addCart">
+                                            <span hidden>${product.ID_PRODUCT}</span>
+                                            <a class="btn-product "
+                                               title="Add to cart"><i class="fa fa-cart-plus"></i>
                                             </a>
                                             <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}"
                                                class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
@@ -301,7 +302,7 @@
                                         </h3>
                                         <!-- end .product-title -->
                                         <div class="product-price">
-                                                ${product.PRICE+''}đ
+                                            <fmt:formatNumber type="number" groupingUsed="true">${product.PRICE}</fmt:formatNumber> đ
                                         </div><!-- end .product-price -->
                                         <div class="ratings-container">
                                             <div class="ratings">
@@ -359,9 +360,11 @@
                                                title="Add to wishlist"></a>
                                         </div><!-- End .product-action -->
 
-                                        <div class="product-action ">
-                                            <a class="btn-product addCart"
-                                               title="Add to cart"><span hidden>${product.ID_PRODUCT}</span><i class="fa fa-cart-plus"></i>
+                                        <div class="product-action addCart">
+                                            <span hidden>${product.ID_PRODUCT}</span>
+
+                                            <a class="btn-product "
+                                               title="Add to cart"><i class="fa fa-cart-plus"></i>
                                             </a>
                                             <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}"
                                                class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
@@ -374,7 +377,7 @@
                                         </h3>
                                         <!-- End .product-title -->
                                         <div class="product-price">
-                                                ${product.PRICE}d
+                                            <fmt:formatNumber type="number" groupingUsed="true">${product.PRICE}</fmt:formatNumber> đ
                                         </div><!-- End .product-price -->
                                         <div class="ratings-container">
                                             <div class="ratings">
@@ -426,10 +429,11 @@
                                                  alt="Product image" class="product-image">
                                         </a>
 
-                                        <div class="product-action ">
-                                            <a class="btn-product addCart"
-                                               title="Add to cart"> <span hidden>${product.ID_PRODUCT}</span><i
-                                                    class="fa fa-cart-plus"></i>
+                                        <div class="product-action addCart">
+                                            <span hidden>${product.ID_PRODUCT}</span>
+
+                                            <a class="btn-product "
+                                               title="Add to cart"><i class="fa fa-cart-plus"></i>
                                             </a>
                                             <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}"
                                                class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
@@ -445,7 +449,7 @@
                                         </h3>
                                         <!-- End .product-title -->
                                         <div class="product-price">
-                                                ${product.PRICE}d
+                                            <fmt:formatNumber type="number" groupingUsed="true">${product.PRICE}</fmt:formatNumber> đ
                                         </div><!-- End .product-price -->
                                         <div class="ratings-container">
                                             <div class="ratings">
@@ -503,12 +507,11 @@
                                                title="Add to wishlist"></a>
                                         </div><!-- End .product-action -->
 
-                                        <div class="product-action ">
+                                        <div class="product-action addCart">
+                                            <span hidden>${product.ID_PRODUCT}</span>
 
-
-                                            <a class="btn-product addCart"
-                                               title="Add to cart"><span hidden>${product.ID_PRODUCT}</span><i
-                                                    class="fa fa-cart-plus"></i>
+                                            <a class="btn-product "
+                                               title="Add to cart"><i class="fa fa-cart-plus"></i>
                                             </a>
                                             <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}"
                                                class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
@@ -524,8 +527,7 @@
                                         </h3>
                                         <!-- End .product-title -->
                                         <div class="product-price">
-                                            <span class="new-price">${product.PRICE}</span>
-                                            <span class="old-price">Was $41.67</span>
+                                            <span class="new-price"> <fmt:formatNumber type="number" groupingUsed="true">${product.PRICE}</fmt:formatNumber> đ</span>
                                         </div><!-- End .product-price -->
                                         <div class="ratings-container">
                                             <div class="ratings">
@@ -533,17 +535,8 @@
                                                      style="width: ${product.STAR_MEDIUM*20}%;"></div>
                                                 <!-- End .ratings-val -->
                                             </div><!-- End .ratings -->
-                                            <span class="ratings-text">( 10 Reviews )</span>
                                         </div><!-- End .rating-container -->
 
-                                        <div class="product-nav product-nav-dots">
-                                            <a href="#" class="active" style="background: #edd2c8;"><span
-                                                    class="sr-only">Color name</span></a>
-                                            <a href="#" style="background: #eaeaec;"><span
-                                                    class="sr-only">Color name</span></a>
-                                            <a href="#" style="background: #333333;"><span
-                                                    class="sr-only">Color name</span></a>
-                                        </div><!-- End .product-nav -->
                                     </div><!-- End .product-body -->
                                 </div>
                                 <!-- End .product -->
@@ -635,12 +628,11 @@
                                                        title="Add to wishlist"></a>
                                                 </div><!-- End .product-action -->
 
-                                                <div class="product-action ">
+                                                <div class="product-action addCart">
+                                                    <span hidden>${product.ID_PRODUCT}</span>
 
-
-                                                    <a class="btn-product addCart "
-                                                       title="Add to cart"><i class="fa fa-cart-plus"> <span
-                                                            hidden>${product.ID_PRODUCT}</span></i>
+                                                    <a class="btn-product "
+                                                       title="Add to cart"><i class="fa fa-cart-plus"></i>
                                                     </a>
                                                     <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}"
                                                        class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
@@ -653,7 +645,7 @@
                                                 </h3>
                                                 <!-- End .product-title -->
                                                 <div class="product-price">
-                                                        ${product.PRICE}
+                                                    <fmt:formatNumber type="number" groupingUsed="true">${product.PRICE}</fmt:formatNumber> đ
                                                 </div><!-- End .product-price -->
                                                 <div class="ratings-container">
                                                     <div class="ratings">
@@ -708,12 +700,11 @@
                                                        title="Add to wishlist"></a>
                                                 </div><!-- End .product-action -->
 
-                                                <div class="product-action ">
+                                                <div class="product-action addCart">
+                                                    <span hidden>${product.ID_PRODUCT}</span>
 
-
-                                                    <a class="btn-product addCart"
-                                                       title="Add to cart"> <span hidden>${product.ID_PRODUCT}</span><i
-                                                            class="fa fa-cart-plus"></i>
+                                                    <a class="btn-product "
+                                                       title="Add to cart"> <i class="fa fa-cart-plus"></i>
                                                     </a>
 
                                                     <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}"
@@ -729,7 +720,7 @@
                                                         href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}">${product.PRODUCT_NAME}</a>
                                                 </h3><!-- End .product-title -->
                                                 <div class="product-price">
-                                                        ${product.PRICE}
+                                                    <fmt:formatNumber type="number" groupingUsed="true">${product.PRICE}</fmt:formatNumber> đ
                                                 </div><!-- End .product-price -->
                                                 <div class="ratings-container">
                                                     <div class="ratings">
@@ -785,10 +776,11 @@
                                                        title="Add to wishlist"></a>
                                                 </div><!-- End .product-action -->
 
-                                                <div class="product-action ">
-                                                    <a class="btn-product addCart"
-                                                       title="Add to cart"> <span hidden>${product.ID_PRODUCT}</span><i
-                                                            class="fa fa-cart-plus"></i>
+                                                <div class="product-action addCart">
+                                                    <span hidden>${product.ID_PRODUCT}</span>
+
+                                                    <a class="btn-product "
+                                                       title="Add to cart"><i class="fa fa-cart-plus"></i>
                                                     </a>
                                                     <a href="${pageContext.request.contextPath}/detail?idProduct=${product.ID_PRODUCT}"
                                                        class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
@@ -800,7 +792,7 @@
                                                 <h3 class="product-title"><a href="">${product.PRODUCT_NAME}
                                                     Case</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
-                                                        ${product.PRICE}
+                                                    <fmt:formatNumber type="number" groupingUsed="true">${product.PRICE}</fmt:formatNumber> đ
                                                 </div><!-- End .product-price -->
                                                 <div class="ratings-container">
                                                     <div class="ratings">
@@ -854,10 +846,11 @@
                                         <img src="<c:url value="${listProduct.get(i).listImg[0]}"/>"
                                              alt="Product image" class="product-image">
                                     </a>
-                                    <div class="product-action ">
-                                        <a class="btn-product addCart"
-                                           title="Add to cart"> <span hidden>${listProduct.get(i).ID_PRODUCT}</span><i
-                                                class="fa fa-cart-plus"></i>
+                                    <div class="product-action addCart">
+                                        <span hidden>${listProduct.get(i).ID_PRODUCT}</span>
+
+                                        <a class="btn-product "
+                                           title="Add to cart"><i class="fa fa-cart-plus"></i>
                                         </a>
                                         <a href="${pageContext.request.contextPath}/detail?idProduct=${listProduct.get(i).ID_PRODUCT}"
                                            class="btn-product" title="Quick view"><i class="fa fa-eye"></i></a>
@@ -870,17 +863,19 @@
                                     </h3>
                                     <!-- End .product-title -->
                                     <div class="product-price">
-                                        <span class="new-price">$279.99</span>
-                                        <span class="old-price">Was ${listProduct.get(i).PRICE}</span>
+                                        <c:set var="price" value="${listProduct.get(i).PRICE}"/>
+                                        <span class="new-price"><fmt:formatNumber type="number" groupingUsed="true">${listProduct.get(i).PRICE}</fmt:formatNumber> đ</span>
                                     </div><!-- End .product-price -->
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val"
-                                                 style="width: ${listProduct.get(i).STAR_MEDIUM*20}%;"></div>
-                                            <!-- End .ratings-val -->
-                                        </div><!-- End .ratings -->
-                                    </div><!-- End .rating-container -->
-
+                                    <c:if test="${listProduct.get(i).STAR_MEDIUM>0}">
+                                        <div class="ratings-container">
+                                            <div class="ratings">
+                                                <div class="ratings-val"
+                                                     style="width: ${listProduct.get(i).STAR_MEDIUM*20}%;"></div>
+                                                <!-- End .ratings-val -->
+                                            </div><!-- End .ratings -->
+                                        </div>
+                                        <!-- End .rating-container -->
+                                    </c:if>
                                 </div><!-- End .product-body -->
                             </div><!-- End .product -->
 

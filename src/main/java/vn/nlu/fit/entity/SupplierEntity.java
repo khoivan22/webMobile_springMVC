@@ -16,7 +16,7 @@ public class SupplierEntity {
     private int ACTIVE;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "supp")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "supp",cascade = CascadeType.REMOVE)
     List<ProductEntity> listProduct;
 
 }

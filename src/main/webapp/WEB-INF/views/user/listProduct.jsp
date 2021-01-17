@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
 <%@include file="/WEB-INF/views/common/user/header.jsp" %>
 <body>
@@ -76,7 +77,7 @@
                                         <h3 class="product-title"><a href="#">${product.PRODUCT_NAME}</a>
                                         </h3><!-- End .product-title -->
                                         <div class="product-price">
-                                                ${product.PRICE}
+                                            <fmt:formatNumber type="number" groupingUsed="true">${product.PRICE}</fmt:formatNumber> đ
                                         </div><!-- End .product-price -->
                                         <div class="ratings-container">
                                             <div class="ratings">

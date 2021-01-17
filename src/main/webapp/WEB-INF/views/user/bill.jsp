@@ -30,12 +30,12 @@
                 <td>Address: </td><td >${bill.address.toString()}</td>
             </tr>
             <tr>
-                <td>Product: </td><td ></td>
+                <td>Product: </td><td>${toString}</td>
             </tr>
 
             <tr class="summary-total">
                 <td>Total price:</td>
-                <td>$160.00</td>
+                <td>${bill.totalPrice}</td>
             </tr><!-- End .summary-total -->
             </tbody>
         </table><!-- End .table table-summary -->

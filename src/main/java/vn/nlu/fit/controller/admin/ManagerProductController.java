@@ -33,7 +33,7 @@ public class ManagerProductController {
     ItemsRepository itemsRepository;
 
     @RequestMapping("{numPage}")
-    public String lisAllProduct(Model model, @PathVariable int numPage) {
+    public String managerProduct(Model model, @PathVariable int numPage) {
         Pageable paging = PageRequest.of(numPage - 1, 8);
         Page<ProductEntity> pageTuts = productRepository.findAll(paging);
         model.addAttribute("pageTuts", pageTuts);
@@ -41,7 +41,7 @@ public class ManagerProductController {
     }
 
     @RequestMapping
-    public String listAllProduct(Model model) {
+    public String managerProduct() {
         return "redirect:/admin/managerProduct/1";
     }
 
@@ -67,10 +67,6 @@ public class ManagerProductController {
         product.setID_PRODUCT(idPro);
         product.setACTIVE(1);
         product.getConfig().setProduct(product);
-//        System.out.println(product.getSupp().getNAME_SUPPLIER()+"-----------------");
-//        product.setSupp(supplerRepository.findById(product.getSupp().getID_SUPPLIER()).get());
-//        product.setItem(itemsRepository.findById(product.getItem().getID_ITEMS()).get());
-
         ProductEntity p = productRepository.save(product);
 
         return "redirect:/admin/managerProduct/add";
@@ -88,10 +84,10 @@ public class ManagerProductController {
     }
 
     @PostMapping("edit")
-    public String editProduct(@ModelAttribute("product") ProductEntity product) {
-        System.out.println(product.getID_PRODUCT());
-//        product.setComment(productRepository.findById(product.getID_PRODUCT()).get().getComment());
-//        product.setListBill(productRepository.findById(product.getID_PRODUCT()).get().getListBill());
+    public String editProduct(@ModelAttribute("product") ProductEntity product, HttpServletRequest request) throws IOException {
+//        System.out.println(product.getMultipleFiles().size());
+        //upload image
+//        product.setIMG(UploadFile.upFiles(product.getMultipleFiles(), request));
         productRepository.save(product);
         return "redirect:/admin/managerProduct/edit?id=" + product.getID_PRODUCT();
     }

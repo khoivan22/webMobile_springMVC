@@ -31,7 +31,11 @@
     <script src="<c:url value="/assets/js/jquery.magnific-popup.min.js"/>"></script>
     <script src="<c:url value="/webjars/sweetalert/2.1.2/dist/sweetalert.min.js"/>"></script>
     <title>Title</title>
-
+<style>
+    .text-size{
+        font-size: 12px;
+    }
+</style>
 </head>
 <header class="header header-intro-clearance header-4">
 
@@ -122,7 +126,7 @@
                                 href="${pageContext.request.contextPath}/register">Sign up</a>
                         </c:if>
                         <c:if test="${userDetail!=null}">
-                            <a href="${pageContext.request.contextPath}/login">${userDetail.getUsername()}</a> / <a
+                            <a>${userDetail.getUsername()}</a> / <a
                                 href="${pageContext.request.contextPath}/logout">Logout</a>
                         </c:if>
                     </div>

@@ -11,53 +11,90 @@
  Target Server Version : 100413
  File Encoding         : 65001
 
- Date: 10/01/2021 18:22:58
+ Date: 16/01/2021 17:17:23
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
+-- Table structure for address
+-- ----------------------------
+DROP TABLE IF EXISTS `address`;
+CREATE TABLE `address`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `addressHome` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `city` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `district` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of address
+-- ----------------------------
+INSERT INTO `address` VALUES (1, 'a', 'a', 'a');
+INSERT INTO `address` VALUES (2, 'a', 'a', 'a');
+
+-- ----------------------------
+-- Table structure for bill
+-- ----------------------------
+DROP TABLE IF EXISTS `bill`;
+CREATE TABLE `bill`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `status` int(11) NOT NULL,
+  `totalPrice` double NOT NULL,
+  `address_id` bigint(20) NULL DEFAULT NULL,
+  `USER_NAME` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `FK1f5an6dq4k8u0idf4oxthpf8t`(`address_id`) USING BTREE,
+  INDEX `FKln9quo0w0pxk89c9s0svncf0w`(`USER_NAME`) USING BTREE,
+  CONSTRAINT `FK1f5an6dq4k8u0idf4oxthpf8t` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKln9quo0w0pxk89c9s0svncf0w` FOREIGN KEY (`USER_NAME`) REFERENCES `user` (`USER_NAME`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for cart
 -- ----------------------------
 DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart`  (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `amount` int(11) NOT NULL,
-  `ID_PRODUCT` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `USER_NAME` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ID_PRODUCT` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `USER_NAME` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FKgx8yqhu6x91pcxttm3x37iuj6`(`ID_PRODUCT`) USING BTREE,
   INDEX `FK222pcsw4egwxpwcyhl5sfa7c9`(`USER_NAME`) USING BTREE,
   CONSTRAINT `FK222pcsw4egwxpwcyhl5sfa7c9` FOREIGN KEY (`USER_NAME`) REFERENCES `user` (`USER_NAME`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FKgx8yqhu6x91pcxttm3x37iuj6` FOREIGN KEY (`ID_PRODUCT`) REFERENCES `product` (`ID_PRODUCT`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for configuration
 -- ----------------------------
 DROP TABLE IF EXISTS `configuration`;
 CREATE TABLE `configuration`  (
-  `ID_PRODUCT` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `DISPLAY` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `CAMERA_FRONT` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `CAMERA_BACK` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `RAM` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `ROM` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `CPU` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `GPU` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `BATTERY` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `OS` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `SIM` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `ID_PRODUCT` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `DISPLAY` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `CAMERA_FRONT` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `CAMERA_BACK` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `RAM` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `ROM` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `CPU` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `GPU` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `BATTERY` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `OS` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `SIM` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`ID_PRODUCT`) USING BTREE,
   CONSTRAINT `FKnlqfqqveqm6pe6jn5lks6xtu9` FOREIGN KEY (`ID_PRODUCT`) REFERENCES `product` (`ID_PRODUCT`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of configuration
 -- ----------------------------
-INSERT INTO `configuration` VALUES ('No.00269739', 'HD, 1334 x 750 pixels', '12.0 MP', '12.0 MP', '2GB', '8GB', 'Apple A10, 4 nhơn, 2.3 GHz', 'Apple GPU 3 nhơn', '7.45 Wh (1960 mAh)', 'iOS11', 'Nano Sim, 1 Sim, hỗ trợ 4G');
-INSERT INTO `configuration` VALUES ('No.00269765', 'Full HD, 1920 x 1080 pixels', '7.0 MP', 'Dual 12.0 MP', '3 GB', '32 GB', 'A10, 4 nhơn, 2.3 GHz', 'Apple GPU 3 nhơn', '11.1 Wh (2900 mAh)', 'iOS11', 'Nano Sim, 1 Sim, hỗ trợ 4G');
+INSERT INTO `configuration` VALUES ('No.00269765', 'Full HD, 1920 x 1080 pixels', '7.0 MP', 'Dual 12.0 MP', '2GB', '8GB', 'A10, 4 nhÃÂÃÂ¡n, 2.3 GHz', 'Apple GPU 3 nhÃÂÃÂ¡n', '11.1 Wh (2900 mAh)', 'iOS11', 'Nano Sim, 1 Sim, hÃÂ¡ÃÂ»ÃÂ trÃÂ¡ÃÂ»ÃÂ£ 4G');
 INSERT INTO `configuration` VALUES ('No.00271554', 'Full HD, 1080 x 1920 pixels', '5.0 MP', '12.0 MP', '2 GB', '32 GB', 'Apple A9, 2 nhơn, 1.8 GHz', 'PowerVR GT7600', '2750mAh', 'iOS11', 'Nano Sim, 1 Sim');
 INSERT INTO `configuration` VALUES ('No.00336613', '2k; 2960 x 1440 pixels', '8.0 MP', 'Dual 12.0 MP', '4 GB', '64 GB', 'Exynos 8895; 8 nhân; 4 nhân 2.3 GHz;  4 nhân 1.7 GHz', 'Mali G71', '3500 mAh', 'Android 9.0 (Pie)', 'Nano Sim; 2 Khe; Hỗ trợ 4G');
 INSERT INTO `configuration` VALUES ('No.00395565', '4.7 inches, Retina HD display, 1334 x 750 pixels', '7 MP', '12 MP', '2GB', '64GB', 'Apple A11 Bionic 6 nhơn, 2 nhơn Monsoon và  4 nhơn Mistral, 2.1 GHz', 'Apple GPU 3 nhơn', '1821 mAh', 'iOS11', 'Nano Sim, 1 Sim');
@@ -118,17 +155,34 @@ INSERT INTO `configuration` VALUES ('No.00615142', '6.3 inches; Full HD+; 1080 x
 INSERT INTO `configuration` VALUES ('No.00619318', '6.22 inches; HD +; 720 x 1520 Pixels', '8.0 MP', '12.0 MP', '2 GB', '32 GB', 'Snapdragon 439; Octa-Core; 2.0Ghz', 'Adreno 505', '5000 mAh', 'Android 9', 'Nano SIM;');
 INSERT INTO `configuration` VALUES ('No.00622392', '6.3 inches; Full HD+; 1080 x 2340 Pixels', '13.0 MP', '48 MP+ 8 MP+ 2 MP+ 2 MP', '3 GB', '32 GB', 'Snap 665; Octa-Core; 2.0 Ghz', 'Adreno 610', '4000 mAh', 'Android 9.0 (Pie)', 'Nano SIM; 2 Sim');
 INSERT INTO `configuration` VALUES ('No.00631292', '7.3; Super AMOLED; Full HD+; 2152 x 1536 Pixels', '10 MP; 8 MP; 10 MP', '12 MP ; 12 MP; 16 MP', '12 GB', '512 GB', '1 nhân 2.84 GHz; 3 nhân 2.42 GHz & 4 nhân 1.8 GHz; 8; 1 nhân 2.84 GHz; 3 nhân 2.42 GHz & 4 nhân', 'Adreno 640', '4380 mAh', 'Android 9.0 (Pie)', 'Nano SIM; 1 Sim');
+INSERT INTO `configuration` VALUES ('No.631293', '', '', '', '2GB', '8GB', '', '', '', '', '');
+
+-- ----------------------------
+-- Table structure for detailbill
+-- ----------------------------
+DROP TABLE IF EXISTS `detailbill`;
+CREATE TABLE `detailbill`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `amount` int(11) NOT NULL,
+  `bill_id` bigint(20) NULL DEFAULT NULL,
+  `product_ID_PRODUCT` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `FKbvqpaaw0mvisw3twk4oawpeaq`(`bill_id`) USING BTREE,
+  INDEX `FK2cht84fy15v1vtw04snkkfk3n`(`product_ID_PRODUCT`) USING BTREE,
+  CONSTRAINT `FK2cht84fy15v1vtw04snkkfk3n` FOREIGN KEY (`product_ID_PRODUCT`) REFERENCES `product` (`ID_PRODUCT`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `FKbvqpaaw0mvisw3twk4oawpeaq` FOREIGN KEY (`bill_id`) REFERENCES `bill` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for items
 -- ----------------------------
 DROP TABLE IF EXISTS `items`;
 CREATE TABLE `items`  (
-  `ID_ITEMS` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ID_ITEMS` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `ACTIVE` int(11) NOT NULL,
-  `ITEMS_NAME` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `ITEMS_NAME` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`ID_ITEMS`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of items
@@ -140,12 +194,12 @@ INSERT INTO `items` VALUES ('DT', 1, 'Điện thoại ');
 -- ----------------------------
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product`  (
-  `ID_PRODUCT` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ID_ITEMS` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ID_SUPPLIER` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `PRODUCT_NAME` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `ID_PRODUCT` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `ID_ITEMS` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `ID_SUPPLIER` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `PRODUCT_NAME` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `PRICE` double NOT NULL,
-  `IMG` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `IMG` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `TOTAL` int(11) NOT NULL,
   `ACTIVE` int(11) NOT NULL,
   `DISCOUNT` double NOT NULL,
@@ -155,16 +209,15 @@ CREATE TABLE `product`  (
   INDEX `FKqobh83w4unw1nr3g1pun46gpd`(`ID_SUPPLIER`) USING BTREE,
   CONSTRAINT `FK2hcm0e8e8b2kr1786gggj9jf4` FOREIGN KEY (`ID_ITEMS`) REFERENCES `items` (`ID_ITEMS`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `FKqobh83w4unw1nr3g1pun46gpd` FOREIGN KEY (`ID_SUPPLIER`) REFERENCES `supplier` (`ID_SUPPLIER`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES ('No.00269739', 'DT', 'APP', 'iPhone 7 32GB', 8990000, '/img/phone/636159398645952790_ip7-black-1.jpg~/img/phone/636159398740350005_ip7-black-2.jpg~/img/phone/636159398740506008_ip7-black-3.jpg~', 1000, 0, 0, 0);
-INSERT INTO `product` VALUES ('No.00269765', 'DT', 'APP', 'iPhone 7 Plus 32GB ', 11990000, '/img/phone/636836628988322696_ip7-plus-vang-1.png~/img/phone/636836628988166719_ip7-plus-vang-2.png~/img/phone/636836628988478673_ip7-plus-vang-3.png~/img/phone/636836628988166719_ip7-plus-vang-4.png~/img/phone/636836628987688789_ip7-plus-vang-5.png~', 1000, 1, 1500000, 1);
-INSERT INTO `product` VALUES ('No.00271554', 'DT', 'APP', 'iPhone 6s Plus 32GB ', 8990000, '/img/phone/636172339622394948_apple-Iphone-6s-gold-1.jpg~/img/phone/636172339809600948_apple-Iphone-6s-gold-2.jpg~/img/phone/636172339809912958_apple-Iphone-6s-gold-3.jpg~', 1000, 1, 0, 0);
+INSERT INTO `product` VALUES ('No.00269765', 'DT', 'SAM', 'iPhone 7 Plus 32GB ', 11990000, '/img/phone/636836628988322696_ip7-plus-vang-1.png~/img/phone/636836628988166719_ip7-plus-vang-2.png~/img/phone/636836628988478673_ip7-plus-vang-3.png~/img/phone/636836628988166719_ip7-plus-vang-4.png~/img/phone/636836628987688789_ip7-plus-vang-5.png~', 1000, 0, 0, 0);
+INSERT INTO `product` VALUES ('No.00271554', 'DT', 'APP', 'iPhone 6s Plus 32GB ', 8990000, '/img/phone/636172339622394948_apple-Iphone-6s-gold-1.jpg~/img/phone/636172339809600948_apple-Iphone-6s-gold-2.jpg~/img/phone/636172339809912958_apple-Iphone-6s-gold-3.jpg~', 1000, 0, 0, 0);
 INSERT INTO `product` VALUES ('No.00336613', 'DT', 'SAM', 'Samsung Galaxy S8 Plus ', 12900000, '/img/phone/636396217066191623_1.jpg~/img/phone/636396217240361623_2.jpg~/img/phone/636396217378181623_3.jpg~/img/phone/636396217480091623_4.jpg~', 1000, 1, 1500000, 0);
-INSERT INTO `product` VALUES ('No.00395565', 'DT', 'APP', 'iPhone 8 64GB ', 15590000, '/img/phone/636459060591822074_1.jpg~/img/phone/636459060731746898_2.jpg~/img/phone/636459060877911402_3.jpg~', 1000, 1, 1500000, 0);
+INSERT INTO `product` VALUES ('No.00395565', 'DT', 'APP', 'iPhone 8 64GB ', 15590000, '/img/phone/636459060591822074_1.jpg~/img/phone/636459060731746898_2.jpg~/img/phone/636459060877911402_3.jpg~', 1000, 0, 1500000, 0);
 INSERT INTO `product` VALUES ('No.00395579', 'DT', 'APP', 'iPhone 8 Plus 64GB ', 15590000, '/img/phone/636459041871679213_1.jpg~/img/phone/636459041871523220_2.jpg~/img/phone/636459041871523220_3.jpg~', 1000, 1, 1500000, 0);
 INSERT INTO `product` VALUES ('No.00395596', 'DT', 'APP', 'iPhone X 64GB ', 19990000, '/img/phone/636483223586180190_3.jpg~/img/phone/636483223586180190_1.jpg~/img/phone/636483223586024189_2.jpg~/img/phone/636483223586024189_4.jpg~', 1000, 1, 1500000, 0);
 INSERT INTO `product` VALUES ('No.00398983', 'DT', 'SAM', 'Samsung Galaxy J7+ ', 5990000, '/img/phone/636447215496605018_1.jpg~', 1000, 1, 1500000, 0);
@@ -222,6 +275,7 @@ INSERT INTO `product` VALUES ('No.00615142', 'DT', 'XIA', 'Xiaomi Redmi Note 8 4
 INSERT INTO `product` VALUES ('No.00619318', 'DT', 'XIA', 'Xiaomi Redmi 8A 2GB - 32GB ', 15000000, '/img/phone/637072701542091596_xiaomi-redmi-8a-den-1.png~', 1000, 1, 1500000, 0);
 INSERT INTO `product` VALUES ('No.00622392', 'DT', 'XIA', 'Xiaomi Redmi Note 8 3GB-32GB ', 15000000, '/img/phone/637060418361864075_xiaomi-redmi-note-8-den-1.png~', 1000, 1, 1500000, 0);
 INSERT INTO `product` VALUES ('No.00631292', 'DT', 'SAM', 'Samsung Galaxy Fold ', 50000000, '/img/phone/637102754985873870_samsung-galaxy-fold-den-0.png~/img/phone/637102750659229623_samsung-galaxy-fold-den-1.png~/img/phone/637102750659209597_samsung-galaxy-fold-den-3.png~/img/phone/637102750658709593_samsung-galaxy-fold-den-2.png~/img/phone/6371', 1000, 1, 1500000, 0);
+INSERT INTO `product` VALUES ('No.631293', 'DT', 'APP', '', 0, '/img/upload/2021/JANUARY/CÆ¡m cÃ  tÃ­m chiÃªn má»¡ hÃ nh.jpeg~/img/upload/2021/JANUARY/CÆ¡m chiÃªn heo thÃ¡i.jpeg~/img/upload/2021/JANUARY/CÆ¡m sÆ°á»n non nÆ°á»ng.jpg~/img/upload/2021/JANUARY/CÆ¡m tÃ´m ram Japan.jpg~', 0, 1, 0, 0);
 
 -- ----------------------------
 -- Table structure for role
@@ -229,9 +283,9 @@ INSERT INTO `product` VALUES ('No.00631292', 'DT', 'SAM', 'Samsung Galaxy Fold '
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role`  (
   `idRole` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`idRole`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role
@@ -244,11 +298,11 @@ INSERT INTO `role` VALUES (2, 'ROLE_USER');
 -- ----------------------------
 DROP TABLE IF EXISTS `supplier`;
 CREATE TABLE `supplier`  (
-  `ID_SUPPLIER` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ID_SUPPLIER` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `ACTIVE` int(11) NOT NULL,
-  `NAME_SUPPLIER` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `NAME_SUPPLIER` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`ID_SUPPLIER`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of supplier
@@ -262,16 +316,22 @@ INSERT INTO `supplier` VALUES ('XIA', 1, 'Xiaomi');
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
-  `USER_NAME` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `CODE` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `EMAIL` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `FULLNAME` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `PASSWORD` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `PHONE` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `USER_NAME` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `CODE` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `EMAIL` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `FULLNAME` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `PASSWORD` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `PHONE` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `idRole` bigint(20) NULL DEFAULT NULL,
   PRIMARY KEY (`USER_NAME`) USING BTREE,
   INDEX `FK6gm7vbjyv8qqbs7sj72cbjh51`(`idRole`) USING BTREE,
   CONSTRAINT `FK6gm7vbjyv8qqbs7sj72cbjh51` FOREIGN KEY (`idRole`) REFERENCES `role` (`idRole`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('a', NULL, 'a@gmail.com', 'a', '$2a$10$QXatl2PhxpU/dBJEVMXTTu80kPXOj1a0IYaHuj3O7SUsTnDnf4Fkm', NULL, 1);
+INSERT INTO `user` VALUES ('b', NULL, 'b@gmail.com', 'b', '$2a$10$v4Iuxmy8aceZsSSLrYoI/ehoGh/mMwijDkybNTIshd6g9leYyiJDi', NULL, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;

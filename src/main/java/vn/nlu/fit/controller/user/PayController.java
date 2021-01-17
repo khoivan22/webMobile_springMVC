@@ -51,16 +51,20 @@ public class PayController {
             bill.setUser(SecurityUntil.getPrincipal().getUser());
             bill.setAddress(addressRepository.save(bill.getAddress()));
             bill.setDate(Until.getCurrentDay());
+            bill.setStatus(0);
             billRepository.save(bill);
+            StringBuilder result= new StringBuilder();
             for (CartEntity c : cartEntityList) {
                 detailBill.setId(null);
                 detailBill.setAmount(c.getAmount());
                 detailBill.setProduct(c.getProduct());
                 detailBill.setBill(bill);
+                result.append(c.getProduct().getPRODUCT_NAME()).append(" x").append(c.getAmount()).append(", ");
                 detailBillRepository.save(detailBill);
                 cartRepository.delete(c);
             }
             model.addAttribute("bill", bill);
+            model.addAttribute("toString", result.substring(0,result.length()-2));
         }
 
         return "user/bill";

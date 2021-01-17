@@ -17,6 +17,7 @@ public class BillEntity {
     private String note;
     private  double totalPrice;
     private String date;
+    private int status;
 
     @JsonIgnore
     @ManyToOne
@@ -24,6 +25,14 @@ public class BillEntity {
     private UserEntity user;
 
     @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "bill")
+    private List<DetailBillEntity> detailBillEntity;
+
+    @JsonIgnore
     @ManyToOne
     private AddressEntity address;
+
+    @Transient
+    private String toStringBil;
+
 }

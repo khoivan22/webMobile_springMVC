@@ -18,7 +18,7 @@ public class ItemsEntity {
     private int ACTIVE;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "item")
+    @OneToMany(cascade = CascadeType.REMOVE,fetch = FetchType.LAZY,mappedBy = "item")
     private List<ProductEntity> listProduct;
 
 

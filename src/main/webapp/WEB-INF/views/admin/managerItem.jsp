@@ -158,8 +158,8 @@
                     type: "post",
                     data: {ids: ids.toString()},
                     success(data) {
-                        alert("xóa thành công")
                         location.reload()
+                        swal("xóa thành công")
                     },
                     error(data) {
                         alert("huhu")
@@ -182,8 +182,8 @@
                     type: "post",
                     data: {ids: ids.toString()},
                     success(data) {
-                        alert("xóa thành công")
                         location.reload()
+                        swal("xóa thành công")
                     },
                     error(data) {
                         alert("huhu")

@@ -62,6 +62,7 @@
                                                 <th class="align-center">Customer</th>
                                                 <th class="align-center">Phone</th>
                                                 <th class="align-center">Address</th>
+                                                <th class="align-center">Status</th>
                                                 <th class="align-center">Total price</th>
                                                 <th class="align-center">Action</th>
                                             </tr>
@@ -91,6 +92,7 @@
                                                     <td class="align-center">${bill.user.USER_NAME}</td>
                                                     <td class="align-center">${bill.phone}</td>
                                                     <td class="align-center">${bill.address}</td>
+                                                    <td class="align-center">${bill.status==1?"Implementation":"Imcomplete"}</td>
                                                     <td class="align-center">${bill.totalPrice}</td>
                                                     <td class="align-center">
                                                         <div class="preview">
@@ -98,7 +100,7 @@
                                                                 <i class="material-icons text-danger">delete</i>
                                                                 <input type="hidden" value="${bill.id}">
                                                             </a>
-                                                            <a href="${pageContext.request.contextPath}/admin/managerItem/edit?id=${bill.id}"><i
+                                                            <a href="${pageContext.request.contextPath}/admin/managerBill/edit?id=${bill.id}"><i
                                                                     class="material-icons text-warning">create</i></a>
                                                         </div>
                                                     </td>
@@ -109,16 +111,16 @@
                                         <div class="d-flex flex-row-reverse bd-highlight">
                                             <ul class="pagination">
                                                 <li class="page-item"><a class="page-link"
-                                                                         href="${pageContext.request.contextPath}/admin/managerItem/${numPage==1?pageTuts.totalPages:(numPage-1)}">Previous</a>
+                                                                         href="${pageContext.request.contextPath}/admin/managerBill/${numPage==1?pageTuts.totalPages:(numPage-1)}">Previous</a>
                                                 </li>
                                                 <c:forEach var="i" begin="1" end="${pageTuts.totalPages}">
                                                     <li class="page-item ${numPage==i?'active':''}"><a
                                                             class="page-link"
-                                                            href="${pageContext.request.contextPath}/admin/managerItem/${i}">${i}</a>
+                                                            href="${pageContext.request.contextPath}/admin/managerBill/${i}">${i}</a>
                                                     </li>
                                                 </c:forEach>
                                                 <li class="page-item"><a class="page-link"
-                                                                         href="${pageContext.request.contextPath}/admin/managerItem/${numPage==pageTuts.totalPages?1:(numPage+1)}">Next</a>
+                                                                         href="${pageContext.request.contextPath}/admin/managerBill/${numPage==pageTuts.totalPages?1:(numPage+1)}">Next</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -158,15 +160,15 @@
             // alert(ids)
             if (ids.length > 0) {
                 $.ajax({
-                    url: "/web_mobile/admin/managerItem/deletes",
+                    url: "/web_mobile/admin/managerBill/deletes",
                     type: "post",
                     data: {ids: ids.toString()},
                     success(data) {
-                        alert("xóa thành công")
                         location.reload()
+                        swal("xóa thành công")
                     },
                     error(data) {
-                        alert("huhu")
+                        alert("fail")
                     }
                 });
             } else {
@@ -180,17 +182,18 @@
         $('.delete').click(function () {
             let ids = [];
             ids.push($(this).find("input").val())
+            alert($(this).find("input").val())
             if (ids.length > 0) {
                 $.ajax({
-                    url: "/web_mobile/admin/managerItem/deletes",
+                    url: "/web_mobile/admin/managerBill/deletes",
                     type: "post",
                     data: {ids: ids.toString()},
                     success(data) {
-                        alert("xóa thành công")
                         location.reload()
+                        swal("xóa thành công")
                     },
                     error(data) {
-                        alert("huhu")
+                        alert("fail")
                     }
                 });
             }

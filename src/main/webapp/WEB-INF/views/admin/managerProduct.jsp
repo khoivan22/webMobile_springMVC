@@ -25,7 +25,7 @@
                             <div class="card">
                                 <div class="card-header ">
                                     <div class=" col-md-6">
-                                        <a href="col-sm-12${pageContext.request.contextPath}/admin/managerProduct/add"
+                                        <a href="${pageContext.request.contextPath}/admin/managerProduct/add"
                                            class="btn btn-icon icon-left btn-warning"><i
                                                 class="fa fa-plus-circle"></i>
                                             add product</a>
@@ -189,11 +189,11 @@
                     type: "post",
                     data: {ids: ids.toString()},
                     success(data) {
-                        alert("xóa thành công")
                         location.reload()
+                        swal("xóa thành công")
                     },
                     error(data) {
-                        alert("huhu")
+                        swal("Tong các Đơn hàng của bạn có sản phẩm này")
                     }
                 });
             } else {
@@ -213,11 +213,11 @@
                     type: "post",
                     data: {ids: ids.toString()},
                     success(data) {
-                        alert("xóa thành công")
                         location.reload()
+                        swal("xóa thành công")
                     },
                     error(data) {
-                        alert("huhu")
+                       swal("Tong các Đơn hàng của bạn có sản phẩm này")
                     }
                 });
             }

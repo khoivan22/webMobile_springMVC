@@ -25,12 +25,5 @@ public class CartEntity {
     @JoinColumn(nullable = false, name = "ID_PRODUCT")
     private ProductEntity product;
 
-    public CartEntity(int amount, UserEntity user, ProductEntity product) {
-        this.amount = amount;
-        this.user = user;
-        this.product = product;
-    }
-    public CartEntity(){
 
-    }
 }

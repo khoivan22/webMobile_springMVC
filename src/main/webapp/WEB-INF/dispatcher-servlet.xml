@@ -38,4 +38,9 @@
     <mvc:interceptors>
         <bean class="vn.nlu.fit.interpreter.MyHandlerInterpreter"/>
     </mvc:interceptors>
+    <!-- Config bean Resource Bundle -->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages"/>
+        <property name="defaultEncoding" value="utf-8"/>
+    </bean>
 </beans>
