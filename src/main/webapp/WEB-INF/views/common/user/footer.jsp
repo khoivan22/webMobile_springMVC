@@ -244,8 +244,19 @@ $.ajax({
         idProduct: $(this).find("span").html(),
     },
     success: function (data) {
-       if(data===true)
+       if(data===true) {
+           $.ajax({
+               url: '${pageContext.request.contextPath}/api/amountCart',
+               type: 'GET',
+               success: function (data) {
+                   $('#amountCart').html(data)
+               },
+               error: function () {
+                   alert("fail")
+               },
+           });
            swal("Đã thêm vào giỏ hàng")
+       }
         else
             swal("Bạn chưa đăng nhập")
     },

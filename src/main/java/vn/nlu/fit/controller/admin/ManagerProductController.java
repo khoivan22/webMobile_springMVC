@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import vn.nlu.fit.entity.CartEntity;
 import vn.nlu.fit.entity.ProductEntity;
 import vn.nlu.fit.repositories.CartRepository;
@@ -87,7 +88,14 @@ public class ManagerProductController {
     public String editProduct(@ModelAttribute("product") ProductEntity product, HttpServletRequest request) throws IOException {
 //        System.out.println(product.getMultipleFiles().size());
         //upload image
-//        product.setIMG(UploadFile.upFiles(product.getMultipleFiles(), request));
+        StringBuilder imgUpdate= new StringBuilder();
+        for(int i=0; i< product.getMultipleFiles().size();i++){
+            if(product.getMultipleFiles().get(i).isEmpty())
+                imgUpdate.append(product.getListImg()[i]).append("~");
+            else
+                imgUpdate.append(UploadFile.upFile(product.getMultipleFiles().get(i), request)).append("~");
+        }
+        product.setIMG(imgUpdate.toString());
         productRepository.save(product);
         return "redirect:/admin/managerProduct/edit?id=" + product.getID_PRODUCT();
     }

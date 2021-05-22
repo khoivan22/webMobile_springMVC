@@ -95,15 +95,43 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
                             <div class="product-desc-content">
-                                <h3>Product Information</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. </p>
-                                <ul>
-                                    <li>Nunc nec porttitor turpis. In eu risus enim. In vitae mollis elit. </li>
-                                    <li>Vivamus finibus vel mauris ut vehicula.</li>
-                                    <li>Nullam a magna porttitor, dictum risus nec, faucibus sapien.</li>
-                                </ul>
+                                <table class="table table-summary">
 
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. </p>
+
+                                    <tbody>
+                                    <tr>
+                                        <td>DISPLAY: </td><td >${product.config.DISPLAY}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CAMERA_FRONT: </td><td >${product.config.CAMERA_FRONT}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CAMERA_BACK: </td><td >${product.config.CAMERA_BACK}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>RAM: </td><td >${product.config.RAM}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ROM: </td><td>${product.config.ROM}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CPU: </td><td>${product.config.CPU}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GPU: </td><td>${product.config.GPU}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BATTERY: </td><td>${product.config.BATTERY}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OS: </td><td>${product.config.OS}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SIM: </td><td>${product.config.SIM}</td>
+                                    </tr>
+
+                                    </tbody>
+                                </table><!-- End .table table-summary -->
                             </div><!-- End .product-desc-content -->
                         </div><!-- .End .tab-pane -->
                         <div class="tab-pane fade" id="product-info-tab" role="tabpanel" aria-labelledby="product-info-link">

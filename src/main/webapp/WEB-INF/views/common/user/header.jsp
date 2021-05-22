@@ -30,7 +30,7 @@
     <script src="<c:url value="/assets/js/demos/demo-4.js"/>"></script>
     <script src="<c:url value="/assets/js/jquery.magnific-popup.min.js"/>"></script>
     <script src="<c:url value="/webjars/sweetalert/2.1.2/dist/sweetalert.min.js"/>"></script>
-    <title>Title</title>
+    <title>Saitama - mobile</title>
 <style>
     .text-size{
         font-size: 12px;
@@ -139,12 +139,7 @@
                     <a href="${pageContext.request.contextPath}/cart" class="dropdown-toggle">
                         <div class="icon">
                             <i class="fa fa-cart-plus"></i>
-                            <c:if test="${userDetail==null}">
-                                <span class="cart-count">0</span>
-                            </c:if>
-                            <c:if test="${userDetail!=null}">
-                                <span class="cart-count">0</span>
-                            </c:if>
+                                <span id="amountCart" class="cart-count">0</span>
                         </div>
                         <p>Cart</p>
                     </a>
@@ -179,8 +174,8 @@
     </div><!-- End .header-bottom -->
 </header>
 <script>
-    /*load menu*/
     $(document).ready(function () {
+        /*load menu*/
         $.ajax({
             url: '${pageContext.request.contextPath}/api/listMenu',
             type: 'GET',
@@ -190,6 +185,18 @@
                 $.each(data, function (key, value) {
                     $('#menu').append('<li><a href="${pageContext.request.contextPath}/listProduct/' + value.id_SUPPLIER + '/1" class="sf-with-ul">' + value.name_SUPPLIER + '</a></li>');
                 });
+            },
+            error: function () {
+                alert("fail")
+            },
+        });
+
+        /*load amoumt cart*/
+        $.ajax({
+            url: '${pageContext.request.contextPath}/api/amountCart',
+            type: 'GET',
+            success: function (data) {
+                $('#amountCart').html(data)
             },
             error: function () {
                 alert("fail")

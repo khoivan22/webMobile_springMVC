@@ -42,6 +42,7 @@
                                     <form:input class="form-control" path="IMG"/>
                                     <form:errors cssClass="text-danger" path="IMG"/>
                                 </div>
+                                        <form:hidden path="ACTIVE"/>
                                     <%-------------------------------------------------------------------------------------------------------------------%>
                                 <div class="form-group">
                                     <label>Item:</label>
@@ -103,34 +104,34 @@
                                                 </div>
                                             </div>
                                         </c:if>
-<%--                                        <c:if test="${par.equals('edit')}">--%>
-<%--                                            <div class="d-flex justify-content-center" style="margin-top: 10px" >--%>
-<%--                                                <div class="image-preview "--%>
-<%--                                                     style="margin-left: 20px;margin-top: 25px;height: 170px; width: 170px;background-size: contain; background-image: url('${pageContext.request.contextPath}${product.listImg[0]}')">--%>
-<%--                                                    <label for="image-upload-0">Choose File</label>--%>
-<%--                                                    <input type="file" name="multipleFiles[0]" id="image-upload-0"--%>
-<%--                                                           class="file-img" value="${product.listImg[0]}">--%>
-<%--                                                </div>--%>
-<%--                                                <div class="image-preview"--%>
-<%--                                                     style="margin-left: 20px;margin-top: 45px;height: 135px; width: 135px;background-size: contain; background-image: url('${pageContext.request.contextPath}${product.listImg[1]}')">--%>
-<%--                                                    <label for="image-upload-1" style="width: 100px">Choose File</label>--%>
-<%--                                                    <input type="file" name="multipleFiles[1]" id="image-upload-1"--%>
-<%--                                                           class="file-img" value="${product.listImg[1]}"/>--%>
-<%--                                                </div>--%>
-<%--                                                <div class="image-preview"--%>
-<%--                                                     style="margin-left: 20px;margin-top: 45px;height: 135px; width: 135px;background-size: contain; background-image: url('${pageContext.request.contextPath}${product.listImg[2]}')">--%>
-<%--                                                    <label for="image-upload-2" style="width: 100px">Choose File</label>--%>
-<%--                                                    <input type="file" name="multipleFiles[2]" id="image-upload-2"--%>
-<%--                                                           class="file-img" value="${product.listImg[2]}">--%>
-<%--                                                </div>--%>
-<%--                                                <div class="image-preview"--%>
-<%--                                                     style="margin-left: 20px;margin-top: 45px;height: 135px; width: 135px;background-size: contain; background-image: url('${pageContext.request.contextPath}${product.listImg[3]}')">--%>
-<%--                                                    <label for="image-upload-3" style="width: 100px">Choose File</label>--%>
-<%--                                                    <input type="file" name="multipleFiles[3]" id="image-upload-3"--%>
-<%--                                                           class="file-img" value="${product.listImg[3]}">--%>
-<%--                                                </div>--%>
-<%--                                            </div>--%>
-<%--                                        </c:if>--%>
+                                        <c:if test="${par.equals('edit')}">
+                                            <div class="d-flex justify-content-center" style="margin-top: 10px" >
+                                                <div class="image-preview "
+                                                     style="margin-left: 20px;margin-top: 25px;height: 170px; width: 170px;background-size: contain; background-image: url('${pageContext.request.contextPath}${product.listImg[0]}')">
+                                                    <label for="image-upload-0">Choose File</label>
+                                                    <input type="file" name="multipleFiles[0]" id="image-upload-0"
+                                                           class="file-img" >
+                                                </div>
+                                                <div class="image-preview"
+                                                     style="margin-left: 20px;margin-top: 45px;height: 135px; width: 135px;background-size: contain; background-image: url('${pageContext.request.contextPath}${product.listImg[1]}')">
+                                                    <label for="image-upload-1" style="width: 100px">Choose File</label>
+                                                    <input type="file" name="multipleFiles[1]" id="image-upload-1"
+                                                           class="file-img" />
+                                                </div>
+                                                <div class="image-preview"
+                                                     style="margin-left: 20px;margin-top: 45px;height: 135px; width: 135px;background-size: contain; background-image: url('${pageContext.request.contextPath}${product.listImg[2]}')">
+                                                    <label for="image-upload-2" style="width: 100px">Choose File</label>
+                                                    <input type="file" name="multipleFiles[2]" id="image-upload-2"
+                                                           class="file-img" >
+                                                </div>
+                                                <div class="image-preview"
+                                                     style="margin-left: 20px;margin-top: 45px;height: 135px; width: 135px;background-size: contain; background-image: url('${pageContext.request.contextPath}${product.listImg[3]}')">
+                                                    <label for="image-upload-3" style="width: 100px">Choose File</label>
+                                                    <input type="file" name="multipleFiles[3]" id="image-upload-3"
+                                                           class="file-img" >
+                                                </div>
+                                            </div>
+                                        </c:if>
                             </div>
                             <div class="card" style="width: 40%; padding: 20px">
                                 <div class="d-flex">

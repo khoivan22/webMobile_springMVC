@@ -54,6 +54,7 @@
                                     <label for="userName">User name *</label>
                                     <form:input path="USER_NAME" class="form-control" id="userName"
                                                 required="required"/>
+                                    <span class="text-danger text-size" id="errUserName"></span>
                                     <form:errors path="USER_NAME" cssClass="text-danger text-size"/>
                                 </div>
                                 <!-- End .form-group -->
@@ -66,6 +67,8 @@
                                 <div class="form-group">
                                     <label for="phone">Confirm password *</label>
                                     <form:password path="REPASS" class="form-control" id="repass" required="required"/>
+                                    <span id="confirm" class="text-danger text-size"></span>
+                                    <span id="confirm1" class="text-success text-size"></span>
                                     <form:errors path="REPASS" cssClass="text-danger text-size"/>
                                 </div>
                                 <!-- End .form-group -->
@@ -116,23 +119,34 @@
 <script>
     $(document).ready(function () {
         $("#userName").keyup(function () {
-$.ajax({
-    url: "${pageContext.request.contextPath}/cart/add",
-    type: "get",
-    data: {
-        idProduct: $(this).find("span").html(),
-    },
-    success: function (data) {
-        if(data)
-            swal("Đã thêm vào giỏ hàng")
-        else
-            swal("Bạn chưa đăng nhập")
-    },
-    error: function (b) {
-        alert("error")
-    }
-})
+            $.ajax({
+                url: "${pageContext.request.contextPath}/api/checkUserName",
+                type: "get",
+                data: {
+                    userName: $(this).val(),
+                },
+                success: function (data) {
+                    if (data === false)
+                        $('#errUserName').html("User name existed")
+                    else
+                        $('#errUserName').html("")
+                },
+                error: function (b) {
+                    alert("error")
+                }
+            })
         });
+
+$('#repass').keyup(function () {
+    if($(this).val()===$('#pass').val()){
+        $('#confirm').html("")
+        $('#confirm1').html("valid")
+    }else {
+        $('#confirm').html("invalid")
+        $('#confirm1').html("")
+    }
+
+})
     });
 </script>
 </html>
